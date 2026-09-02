@@ -95,7 +95,10 @@ export default function PageHero({
             style={{ objectPosition }}
           />
         </div>
-        <div className="relative z-[2] shell" style={{ marginTop: -44 }}>
+        {/* The title crosses the photograph's bottom edge; the eyebrow does
+            not. Pulling the whole block up put a mocha label on a light beige
+            photo, where it was unreadable. */}
+        <div className="relative z-[2] shell pt-7">
           <div className="rise">
             <p className="eyebrow">{eyebrow}</p>
             <h1 className="display d-hero mt-4">{title}</h1>
