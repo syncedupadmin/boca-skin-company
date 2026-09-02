@@ -221,7 +221,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Facial Systems",
     blurb:
       "Named systems and structured facial experiences, built around the HydraFacial platform and DMK Enzyme Therapy.",
-    image: "/img/treat-mask.webp",
+    image: "/img/facial-cards.webp",
     treatments: [
       {
         name: "BSC Custom HydraFacial",
@@ -248,7 +248,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Infusion & Collagen Induction",
     blurb:
       "Two different routes to the same objective: getting active ingredients past the surface and prompting the skin to rebuild.",
-    image: "/img/treat-01-poster.webp",
+    image: "/img/spec-device.webp",
     treatments: [
       {
         name: "Skin Pen Microneedling",
@@ -268,7 +268,7 @@ export const serviceCategories: ServiceCategory[] = [
     // The LED-room shot is lit in saturated blue and fights the warm palette.
     // This is the actual RF console and handpieces, which is both on-category
     // and on-brand.
-    image: "/img/treat-advanced.webp",
+    image: "/img/room-led.webp",
     treatments: [
       {
         name: "Morpheus8",
@@ -285,7 +285,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Chemical Resurfacing",
     blurb:
       "Seven peels, chosen against your skin type and the post-peel experience you want. Unsure which? Book the PCA and we will decide in person.",
-    image: "/img/treat-mask-portrait.webp",
+    image: "/img/spec-facial.webp",
     treatments: [
       { name: "The Perfect Peel", body: "The only medium depth medical grade chemical peel with glutathione for all skin types & all ethnicities." },
       { name: "Reve Skin Enlighten Peel", body: "Noninvasive and painless with limited downtime. Enlighten™ is designed for all skin types, especially for darker skin types at higher risk of hyperpigmentation. Lightening peels block pigmentation production so that no new pigmentation surfaces during the treatment cycle. Home care requirements before treatment." },
@@ -301,7 +301,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Combination Treatments",
     blurb:
       "Our core specialty: pairing treatments so they compound. This is the clearest evidence that we do not treat every service as an isolated item on a menu.",
-    image: "/img/treat-device.webp",
+    image: "/img/tools-linen.webp",
     treatments: [
       { name: "Skin Pen Microneedling + HydraFacial™", body: "Get ready for the ultimate glow-up! This is BSC's most popular service! Exfoliate & Extract with the HydraFacial™ Machine + Microneedle with the Skin Pen. We infuse the skin with Growth Factors after the microneedling treatment is over. This treatment is amazing for anyone who is looking to produce collagen, rid fine lines/wrinkles, diminish sun spots/pigmentation, tighten and firm the skin & shrink pores." },
       { name: "Nano Infusion + HydraFacial™", body: "Receive all the amazing benefits of Nano Infusion while also getting your skin squeaky clean with the HydraFacial™! If you are looking for an effective treatment with little to no downtime, this is for you!" },
@@ -319,6 +319,7 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "wellness",
     title: "Wellness",
     blurb: "IV therapy and vitamin injections. Kept separate from skin services on purpose.",
+    image: "/img/bsc-neon.webp",
     treatments: [
       { name: "IV Bags", items: ["All in One IV", "Hangover Recovery IV", "Myers Cocktail IV", "Skinny Confidential IV", "Get Well Soon IV", "The Jet Setter IV", "Beauty Elixer IV", "NAD+ Injection"] },
       { name: "Vitamin Injections", items: ["Glutathione", "Vitamin D", "B12"] },
