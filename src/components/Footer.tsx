@@ -4,8 +4,10 @@ import { site, nav } from "@/lib/content";
 
 /**
  * The booking footer is a destination, not a thin strip. Black field, the CTA
- * set at display scale as a ruled text link rather than a button, and the neon
- * sign used as an environmental fragment cut by the right viewport edge.
+ * set at display scale as a ruled text link rather than a button. Deliberately
+ * left as a bare typographic field: a photo anchored to the right edge here
+ * sat under the headline, phone and address at mobile widths and cost more in
+ * legibility than it returned in atmosphere.
  */
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -15,27 +17,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)" }}>
       {/* ------------------------------------------------ booking field */}
-      <div className="relative bleed overflow-hidden">
-        {/* neon fragment, partially cut by the right edge */}
-        <div
-          className="pointer-events-none absolute right-0 bottom-0"
-          style={{
-            width: "min(62vw, 520px)",
-            height: "min(46vh, 520px)",
-            opacity: 0.9,
-          }}
-          aria-hidden
-        >
-          <Image
-            src="/img/neon-fragment.webp"
-            alt=""
-            fill
-            sizes="38vw"
-            className="object-cover"
-            style={{ objectPosition: "40% 50%" }}
-          />
-        </div>
-
+      <div className="relative bleed">
         <div
           className="shell relative z-[2] flex flex-col justify-end"
           style={{
