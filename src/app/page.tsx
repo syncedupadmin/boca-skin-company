@@ -2,199 +2,197 @@ import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
-import {
-  philosophy,
-  soundsLikeYou,
-  ourWork,
-  welcome,
-  site,
-} from "@/lib/content";
+import { philosophy, soundsLikeYou, ourWork, welcome, site } from "@/lib/content";
 
+/**
+ * The homepage alternates MATERIAL, not just content:
+ *   paper + dominant room  →  mocha typographic field  →  paper diagnostic
+ *   cluster  →  edge-to-edge image pair  →  full-bleed interior with an
+ *   attached slab  →  review interface  →  black booking destination.
+ *
+ * The previous build ran paper/serif/paragraph/rule the whole way down, which
+ * is why it still felt templated after the obvious ornaments were removed.
+ */
 export default function Home() {
   return (
     <>
       <Hero />
 
-      {/* =============================================== the premise ===== */}
+      {/* ============================================ mocha field ======== */}
+      {/* Mass without another photograph: scale and color do the work. */}
       <section
-        style={{ background: "var(--color-paper)" }}
-        className="pb-[clamp(72px,9vw,132px)] pt-[clamp(48px,5vw,80px)]"
+        className="bleed"
+        style={{ background: "var(--color-mocha)", color: "#ffffff" }}
       >
-        <div className="shell">
-          <div className="lg:grid lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-20 lg:items-end">
-            <div>
-              <h2 className="display d-lg rise max-w-[22ch]">
-                At Boca Skin Company, we&rsquo;re firm believers that when it
-                comes to skincare and beauty treatments, there is no
-                one-size-fits-all approach.
-              </h2>
-            </div>
-            <p
-              className="mt-8 lg:mt-0 rise max-w-[46ch]"
-              style={{ ["--d" as string]: "90ms", color: "var(--color-ink-80)" }}
-            >
-              {philosophy.body}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================== does this sound like == */}
-      <section
-        className="chapter-tight"
-        style={{ background: "var(--color-paper)" }}
-      >
-        <div className="shell">
-          <h2 className="display d-lg max-w-[18ch] rise">
-            {soundsLikeYou.eyebrow}
-          </h2>
-
-          <ol className="mt-12 md:mt-16 grid gap-x-10 gap-y-9 md:grid-cols-3">
-            {soundsLikeYou.items.map((it, i) => (
-              <li
-                key={it.claim}
-                className="rise pt-6"
-                style={{
-                  borderTop: "1px solid var(--color-rule)",
-                  ["--d" as string]: `${i * 90}ms`,
-                }}
-              >
-                <h3 className="display d-sm">{it.claim}</h3>
-                <p className="mt-3" style={{ color: "var(--color-ink-80)" }}>
-                  {it.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-
-          <p
-            className="display d-lg mt-16 md:mt-24 max-w-[26ch] rise pt-9"
-            style={{ borderTop: "1px solid var(--color-rule)" }}
+        <div
+          className="shell pad-lg flex flex-col justify-center"
+          style={{ minHeight: "clamp(360px, 46vw, 560px)" }}
+        >
+          <h2
+            className="display rise"
+            style={{
+              fontSize: "clamp(38px, 5.4vw, 80px)",
+              lineHeight: 0.94,
+              letterSpacing: "-0.03em",
+              maxWidth: "17ch",
+            }}
           >
-            You are ready to take your skin health to the next level.
+            {philosophy.statement}
+          </h2>
+          <p
+            className="mt-8 rise"
+            style={{
+              maxWidth: "48ch",
+              fontSize: 19,
+              lineHeight: 1.55,
+              color: "rgba(255,255,255,0.88)",
+              ["--d" as string]: "90ms",
+            }}
+          >
+            {philosophy.body}
           </p>
         </div>
       </section>
 
-      {/* ================================================== our work ===== */}
-      <section
-        className="chapter"
-        style={{ background: "var(--color-paper-deep)" }}
-      >
-        <div className="shell">
-          <div className="max-w-[70ch]">
+      {/* ======================================= diagnostic cluster ====== */}
+      <section className="pad-lg" style={{ background: "var(--color-paper)" }}>
+        <div className="shell lg:grid lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <div className="lg:sticky lg:top-[120px] lg:self-start">
+            <h2 className="display d-lg max-w-[11ch] rise">
+              {soundsLikeYou.eyebrow}
+            </h2>
             <p
-              className="deck rise"
-              style={{ ["--d" as string]: "80ms", color: "var(--color-ink-80)" }}
+              className="display mt-10 max-w-[16ch] rise"
+              style={{ fontSize: "clamp(24px, 2vw, 30px)", lineHeight: 1.1, color: "var(--color-mocha)" }}
             >
-              {ourWork.body}
+              {soundsLikeYou.close}
             </p>
           </div>
 
-          <div className="mt-16 md:mt-20 flex flex-col gap-16 md:gap-24">
-            {ourWork.specialties.map((s, i) => {
-              const flip = i % 2 === 1;
-              return (
-                <article
-                  key={s.title}
-                  className={`grid gap-8 md:gap-14 items-center lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] ${
-                    flip ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]" : ""
-                  }`}
+          <ul className="mt-10 lg:mt-0" style={{ borderTop: "1px solid var(--color-mocha)" }}>
+            {soundsLikeYou.items.map((it) => (
+              <li
+                key={it.claim}
+                className="drow flex flex-col justify-center px-0 lg:px-6 py-8 lg:py-0"
+                style={{
+                  borderBottom: "1px solid var(--color-mocha)",
+                  minHeight: 190,
+                }}
+              >
+                <h3 className="display" style={{ fontSize: "clamp(26px, 2.7vw, 40px)", lineHeight: 1.04 }}>
+                  {it.claim}
+                </h3>
+                <p
+                  className="drow-sub mt-3 max-w-[62ch]"
+                  style={{ fontSize: 17, lineHeight: 1.5, color: "var(--color-ink-55)" }}
                 >
-                  <div
-                    className={`relative wipe ${flip ? "lg:order-2" : ""}`}
-                    style={{
-                      aspectRatio: "3 / 2",
-                      ["--curtain" as string]: "var(--color-paper-deep)",
-                    }}
-                  >
-                    <Image
-                      src={s.image}
-                      alt={s.title}
-                      fill
-                      sizes="(max-width: 1023px) 100vw, 45vw"
-                      className="object-cover"
-                    />
-                  </div>
+                  {it.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-                  <div className={flip ? "lg:order-1 lg:pr-10" : "lg:pl-6"}>
-                    <div
-                      className="pb-4 rise"
-                      style={{ borderBottom: "1px solid var(--color-rule)" }}
-                    >
-                      <h3 className="display d-md">{s.title}</h3>
-                    </div>
-                    <p
-                      className="prose-bsc mt-6 rise"
-                      style={{
-                        ["--d" as string]: "90ms",
-                        color: "var(--color-ink-80)",
-                      }}
-                    >
-                      {s.body}
-                    </p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+      </section>
 
-          <div className="mt-14 rise">
-            <Link href="/services" className="btn btn-mocha">
-              Explore our services
-              <span aria-hidden>&#8594;</span>
-            </Link>
+      {/* ========================================= specialty diptych ===== */}
+      {/* Two panels, edge to edge, no page margins. Hovering one gives it
+          more room, which is the selection behaving like selection. */}
+      <section className="bleed" aria-label="Our specialties">
+        <div
+          className="panels flex flex-col lg:flex-row"
+          style={{ background: "var(--color-ink)" }}
+        >
+          {ourWork.specialties.map((s, idx) => (
+            <article
+              key={s.title}
+              className="panel relative overflow-hidden flex-1"
+              style={{
+                minHeight: "clamp(420px, 62svh, 760px)",
+                borderLeft: idx === 1 ? "1px solid var(--color-ink)" : undefined,
+              }}
+            >
+              <Image
+                src={s.image}
+                alt={s.title}
+                fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover"
+              />
+              {/* copy sits in a flush slab attached to the bottom edge */}
+              <div
+                className="absolute bottom-0 left-0 max-w-[380px]"
+                style={{ background: "var(--color-paper)", padding: "24px 26px" }}
+              >
+                <h3 className="display" style={{ fontSize: "clamp(26px, 2.4vw, 38px)", lineHeight: 1.04 }}>
+                  {s.title}
+                </h3>
+                <p
+                  className="mt-2"
+                  style={{ fontSize: 16, lineHeight: 1.5, color: "var(--color-ink-80)" }}
+                >
+                  {s.lead}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* ============================================ the room =========== */}
+      {/* Full-bleed interior touching every edge, with the welcome text as a
+          slab pinned into the bottom-left corner. Not centered text on a photo. */}
+      <section className="bleed relative" aria-label="Inside Boca Skin Company">
+        <div
+          className="relative w-full"
+          style={{ height: "clamp(470px, 78vh, 820px)" }}
+        >
+          <Image
+            src="/img/room-wide.webp"
+            alt="A treatment suite at Boca Skin Company"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: "50% 46%" }}
+          />
+        </div>
+
+        <div className="shell">
+          <div
+            className="slab relative z-[2]"
+            style={{ marginTop: "clamp(-96px, -6vw, -48px)", maxWidth: 500 }}
+          >
+            <h2 className="display d-md">{welcome.statement}</h2>
+            <div className="mt-5" style={{ color: "var(--color-ink-80)", fontSize: 17, lineHeight: 1.55 }}>
+              <p>{welcome.body[0]}</p>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/about" className="btn">
+                More about us
+              </Link>
+              <a
+                href={site.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-mocha"
+              >
+                @bocaskincompany
+                <span aria-hidden>&#8599;</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ================================================== the room ===== */}
-      <section className="chapter" style={{ background: "var(--color-paper)" }}>
-        <div className="shell">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20 items-center">
-            <div
-              className="relative wipe"
-              style={{
-                aspectRatio: "3 / 2",
-                ["--curtain" as string]: "var(--color-paper)",
-              }}
-            >
-              <Image
-                src="/img/room-lounge.webp"
-                alt="The lounge at Boca Skin Company"
-                fill
-                sizes="(max-width: 1023px) 100vw, 52vw"
-                className="object-cover"
-              />
-            </div>
-
-            <div>
-              <h2 className="display d-lg rise max-w-[20ch]">
-                {welcome.statement}
-              </h2>
-              <div
-                className="prose-bsc mt-7 rise"
-                style={{ ["--d" as string]: "90ms", color: "var(--color-ink-80)" }}
-              >
-                {welcome.body.map((p) => (
-                  <p key={p.slice(0, 24)}>{p}</p>
-                ))}
-              </div>
-              <div className="mt-9 flex flex-wrap gap-4 rise">
-                <Link href="/about" className="btn">
-                  More about us
-                </Link>
-                <a
-                  href={site.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-mocha"
-                >
-                  @bocaskincompany
-                  <span aria-hidden>&#8599;</span>
-                </a>
-              </div>
-            </div>
+      {/* ====================================== bridge to services ======= */}
+      <section className="pad-md" style={{ background: "var(--color-paper)" }}>
+        <div className="shell lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:items-end">
+          <p className="display d-md max-w-[22ch] rise">{ourWork.body}</p>
+          <div className="mt-8 lg:mt-0 lg:justify-self-end rise">
+            <Link href="/services" className="btn btn-mocha">
+              Explore our services
+              <span aria-hidden>&#8594;</span>
+            </Link>
           </div>
         </div>
       </section>

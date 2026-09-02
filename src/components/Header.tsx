@@ -30,8 +30,8 @@ export default function Header() {
       <header
         className="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
         style={{
-          background: solid || open ? "var(--color-paper)" : "transparent",
-          borderBottom: `1px solid ${solid && !open ? "var(--color-rule)" : "transparent"}`,
+          background: "var(--color-paper)",
+          borderBottom: `1px solid ${solid ? "var(--color-rule)" : "transparent"}`,
         }}
       >
         <div className="shell flex items-center justify-between h-[68px] md:h-[84px]">

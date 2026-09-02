@@ -94,12 +94,14 @@ export const ourWork = {
   specialties: [
     {
       title: "Core Specialties",
-      image: "/img/treat-device.webp",
+      image: "/img/spec-device.webp",
+      lead: "One of our core specialties lies in the art of combining treatments to create a synergistic effect.",
       body: "One of our core specialties lies in the art of combining treatments to create a synergistic effect. Take, for instance, our Hydrafacial x Microneedling fusion. This innovative pairing harnesses the deep exfoliation and rejuvenation of a Hydrafacial with the collagen-boosting power of Microneedling, resulting in a treatment that not only refreshes your skin but also enhances its youthful radiance.",
     },
     {
       title: "Custom Facials",
-      image: "/img/treat-mask.webp",
+      image: "/img/spec-facial.webp",
+      lead: "Our custom facials are another testament to our commitment to personalized beauty.",
       body: "Our custom facials are another testament to our commitment to personalized beauty. By blending carefully chosen facial treatments with the appropriate peels, we address your unique concerns, whether it's combating acne, reducing pigmentation, or simply achieving a radiant glow. These facials are meticulously tailored to your skin type and condition, ensuring you experience the most effective and enjoyable skincare journey.",
     },
   ],

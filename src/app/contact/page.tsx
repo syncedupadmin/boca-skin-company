@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import PageHero from "@/components/PageHero";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -19,93 +19,52 @@ const rows = [
 export default function ContactPage() {
   return (
     <>
-      <section style={{ background: "var(--color-paper)" }}>
-        <div className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-14 md:pb-20">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)] lg:gap-20 items-end">
-            <div>
-              <p className="eyebrow rise">Contact</p>
-              <h1 className="display d-hero mt-6 max-w-[13ch] text-balance rise">
-                Any questions? We&rsquo;d love to help.
-              </h1>
+      <PageHero
+        eyebrow="Contact"
+        title="Say hello"
+        deck="Any questions? We&rsquo;d love to help."
+        image="/img/hero-bath.webp"
+        alt="Inside Boca Skin Company"
+        objectPosition="52% 44%"
+        action={
+          <a
+            href={site.booking}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-mocha"
+          >
+            Book a visit
+            <span aria-hidden>&#8599;</span>
+          </a>
+        }
+      />
 
-              <dl className="mt-12">
-                {rows.map((r, i) => (
-                  <div
-                    key={r.k}
-                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-6 md:gap-12 py-6 rise"
-                    style={{
-                      borderTop: "1px solid var(--color-rule)",
-                      ["--d" as string]: `${i * 60}ms`,
-                    }}
-                  >
-                    <dt
-                      className="label pt-2 w-[84px]"
-                      style={{ color: "var(--color-mocha)" }}
-                    >
-                      {r.k}
-                    </dt>
-                    <dd className="min-w-0">
-                      <a
-                        href={r.href}
-                        target={r.ext ? "_blank" : undefined}
-                        rel={r.ext ? "noopener noreferrer" : undefined}
-                        className="display d-sm link-rule whitespace-pre-line break-words max-w-full py-2.5 inline-block"
-                      >
-                        {r.v}
-                      </a>
-                    </dd>
-                  </div>
-                ))}
-                <div
-                  className="grid grid-cols-[auto_minmax(0,1fr)] gap-6 md:gap-12 py-6 rise"
-                  style={{ borderTop: "1px solid var(--color-rule)" }}
-                >
-                  <dt
-                    className="label pt-2 w-[84px]"
-                    style={{ color: "var(--color-mocha)" }}
-                  >
-                    Booking
-                  </dt>
-                  <dd>
-                    <a
-                      href={site.booking}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-mocha"
-                    >
-                      Book a visit
-                      <span aria-hidden>&#8599;</span>
-                    </a>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-
-            <div>
-              <a
-                href={site.maps}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative block wipe"
-                style={{
-                  aspectRatio: "3 / 4",
-                  ["--curtain" as string]: "var(--color-paper)",
-                }}
+      {/* details */}
+      <section className="pad-lg" style={{ background: "var(--color-paper)" }}>
+        <div className="shell">
+          <dl style={{ borderTop: "1px solid var(--color-rule)" }}>
+            {rows.map((r) => (
+              <div
+                key={r.k}
+                className="drow grid grid-cols-[110px_minmax(0,1fr)] gap-6 md:gap-12 items-center px-0 lg:px-5 rise"
+                style={{ borderBottom: "1px solid var(--color-rule)", minHeight: 104 }}
               >
-                <Image
-                  src="/img/room-lounge.webp"
-                  alt="The lounge at Boca Skin Company in Boca Raton"
-                  fill
-                  priority
-                  sizes="(max-width: 1023px) 100vw, 38vw"
-                  className="object-cover"
-                />
-              </a>
-              <p className="meta mt-3" style={{ color: "var(--color-ink-55)" }}>
-                5499 N Federal Hwy Suite D, Boca Raton, FL
-              </p>
-            </div>
-          </div>
+                <dt className="label" style={{ color: "var(--color-mocha)" }}>
+                  {r.k}
+                </dt>
+                <dd className="min-w-0">
+                  <a
+                    href={r.href}
+                    target={r.ext ? "_blank" : undefined}
+                    rel={r.ext ? "noopener noreferrer" : undefined}
+                    className="display d-sm link-rule whitespace-pre-line break-words max-w-full py-2.5 inline-block"
+                  >
+                    {r.v}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

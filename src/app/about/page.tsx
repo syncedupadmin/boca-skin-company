@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import PageHero from "@/components/PageHero";
 import { about, site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -15,37 +16,15 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* ---------------------------------------------------------- hero */}
-      <section style={{ background: "var(--color-paper)" }}>
-        <div className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-14 md:pb-20">
-          <h1 className="display d-xl mt-6 max-w-[26ch] text-balance rise">
-            {about.headline}
-          </h1>
-          <p
-            className="deck mt-7 max-w-[52ch] rise"
-            style={{ ["--d" as string]: "90ms", color: "var(--color-ink-80)" }}
-          >
-            {about.sub}
-          </p>
-
-          <div
-            className="relative mt-12 md:mt-16 wipe"
-            style={{
-              aspectRatio: "16 / 9",
-              ["--curtain" as string]: "var(--color-paper)",
-            }}
-          >
-            <Image
-              src="/img/room-busts.webp"
-              alt="Inside Boca Skin Company"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About BSC"
+        title="About"
+        deck={about.headline}
+        sub={about.sub}
+        image="/img/hero-busts.webp"
+        alt="Inside Boca Skin Company"
+        objectPosition="55% 45%"
+      />
 
       {/* --------------------------------------------------------- chloe */}
       <section

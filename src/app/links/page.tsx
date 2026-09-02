@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import PageHero from "@/components/PageHero";
 import { shopLinks, site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -11,32 +11,18 @@ export const metadata: Metadata = {
 
 export default function LinksPage() {
   return (
-    <section style={{ background: "var(--color-paper)" }}>
-      <div className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-20 md:pb-28">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
-          <div className="lg:sticky lg:top-[120px] lg:self-start">
-            <p className="eyebrow rise">Links</p>
-            <h1 className="display d-xl mt-5 max-w-[12ch] rise">
-              Everything in one place.
-            </h1>
-            <div
-              className="relative mt-9 wipe"
-              style={{
-                aspectRatio: "4 / 5",
-                ["--curtain" as string]: "var(--color-paper)",
-              }}
-            >
-              <Image
-                src="/img/bsc-neon.webp"
-                alt="Boca Skin Company"
-                fill
-                priority
-                sizes="(max-width: 1023px) 100vw, 32vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+    <>
+      <PageHero
+        eyebrow="Links"
+        title="Everything in one place"
+        deck="Book, shop the lines we carry, buy a gift card or leave a review."
+        image="/img/room-busts.webp"
+        alt="Inside Boca Skin Company"
+        objectPosition="58% 45%"
+      />
 
+      <section className="pad-lg" style={{ background: "var(--color-paper)" }}>
+        <div className="shell">
           <ul>
             {shopLinks.map((l, i) => (
               <li
@@ -67,23 +53,23 @@ export default function LinksPage() {
               </li>
             ))}
           </ul>
-        </div>
 
-        <p
-          className="mono-body mt-14 max-w-[62ch]"
-          style={{ color: "var(--color-ink-55)" }}
-        >
-          Questions before you book? Call{" "}
-          <a href={site.phoneHref} className="link-rule link-rule-on">
-            {site.phone}
-          </a>{" "}
-          or email{" "}
-          <a href={`mailto:${site.email}`} className="link-rule link-rule-on">
-            {site.email}
-          </a>
-          .
-        </p>
-      </div>
-    </section>
+          <p
+            className="mt-14 max-w-[62ch]"
+            style={{ color: "var(--color-ink-55)" }}
+          >
+            Questions before you book? Call{" "}
+            <a href={site.phoneHref} className="link-rule link-rule-on inline-block py-2">
+              {site.phone}
+            </a>{" "}
+            or email{" "}
+            <a href={`mailto:${site.email}`} className="link-rule link-rule-on inline-block py-2">
+              {site.email}
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

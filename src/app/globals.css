@@ -169,28 +169,31 @@ video {
 }
 
 .d-hero {
-  font-size: clamp(46px, 8.6vw, 92px);
-  line-height: 0.94;
+  font-size: clamp(54px, 8.4vw, 122px);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
 }
 @media (min-width: 1024px) {
   .d-hero {
-    line-height: 0.9;
+    line-height: 0.82;
   }
 }
 .d-xl {
-  font-size: clamp(40px, 6vw, 70px);
-  line-height: 0.98;
+  font-size: clamp(44px, 5.8vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.028em;
 }
 .d-lg {
-  font-size: clamp(34px, 4.4vw, 56px);
-  line-height: 1;
+  font-size: clamp(38px, 4.6vw, 62px);
+  line-height: 0.96;
+  letter-spacing: -0.022em;
 }
 .d-md {
-  font-size: clamp(28px, 3vw, 36px);
-  line-height: 1.06;
+  font-size: clamp(30px, 3.1vw, 42px);
+  line-height: 1.04;
 }
 .d-sm {
-  font-size: clamp(24px, 2.2vw, 29px);
+  font-size: clamp(24px, 2.2vw, 30px);
   line-height: 1.12;
 }
 .deck {
@@ -327,43 +330,15 @@ html.reveal-ready .wipe.is-in::after {
   transform: translate3d(101%, 0, 0);
 }
 
-html.reveal-ready .drawline {
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 620ms var(--ease-bsc);
-  transition-delay: var(--d, 0ms);
-}
-html.reveal-ready .drawline.is-in {
-  transform: scaleY(1);
-}
 
 @media (prefers-reduced-motion: reduce) {
-  html.reveal-ready .rise,
-  html.reveal-ready .drawline {
+  html.reveal-ready .rise {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
   html.reveal-ready .wipe::after {
     display: none;
-  }
-}
-
-/* ------------------------------------------------------- marquee -------- */
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 46s linear infinite;
-}
-@keyframes marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
   }
 }
 
@@ -389,4 +364,81 @@ html.reveal-ready .drawline.is-in {
   background: var(--color-ink);
   color: var(--color-paper);
   padding: 15px 20px;
+}
+
+/* ==========================================================================
+   MASS
+   The failure of the previous build was uniform visual weight: a medium
+   headline, a small paragraph, a modest photo, and a large empty field.
+   Nothing dominated, so the emptiness had no pressure around it.
+   Every section now commits to one of three compositions:
+   FIELD (image or color owns 65-100%), COLLISION (type crosses an image
+   boundary), or CLUSTER (content compressed, rest deliberately empty).
+   ========================================================================== */
+
+/* Break out of .shell to the full viewport, safely, without causing
+   horizontal scroll on a scrollbar-bearing desktop. */
+.bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* A slab that sits ON an image and touches its edges. Never floats. */
+.slab {
+  background: var(--color-paper);
+  padding: clamp(28px, 3.4vw, 52px);
+}
+
+/* Section padding. Space is generous but never accidental: no section is
+   allowed to be tall merely because of a min-height. */
+.pad-lg {
+  padding-block: clamp(72px, 8vw, 130px);
+}
+.pad-md {
+  padding-block: clamp(60px, 5.5vw, 96px);
+}
+
+/* Diagnostic rows: dense typographic mass, inverting on interaction. */
+.drow {
+  transition: background-color 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (hover: hover) {
+  .drow:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .drow:hover .drow-sub {
+    color: rgba(247, 243, 240, 0.8);
+  }
+}
+.drow:focus-within {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Edge-to-edge specialty panels. Hover gives the chosen one more room. */
+.panel {
+  transition: flex-grow 500ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.panel img {
+  transition: transform 500ms cubic-bezier(0.76, 0, 0.24, 1);
+  transform: scale(1.04);
+}
+@media (hover: hover) {
+  .panels:hover .panel {
+    flex-grow: 0.68;
+  }
+  .panels .panel:hover {
+    flex-grow: 1.32;
+  }
+  .panel:hover img {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .panel img {
+    transition: none;
+  }
 }

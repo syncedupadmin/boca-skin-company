@@ -3,45 +3,92 @@ import Image from "next/image";
 import { site, nav } from "@/lib/content";
 
 /**
- * The Consultation Line terminates here, at the booking action.
- * This is the single full mocha section on the site.
+ * The booking footer is a destination, not a thin strip. Black field, the CTA
+ * set at display scale as a ruled text link rather than a button, and the neon
+ * sign used as an environmental fragment cut by the right viewport edge.
  */
 export default function Footer() {
   const year = new Date().getFullYear();
+  const dim = "rgba(247,243,240,0.88)";
+  const hair = "rgba(247,243,240,0.22)";
 
   return (
-    <footer style={{ background: "var(--color-mocha)", color: "var(--color-paper)" }}>
-      <div className="shell">
-        {/* booking */}
-        <div className="chapter-tight grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
-              Begin
-            </p>
-            <h2 className="display d-xl mt-5 max-w-[15ch]">
-              Your skin, read closely.
-            </h2>
-            <p className="mt-6 max-w-[54ch] deck" style={{ color: "rgba(247,243,240,0.88)" }}>
-              Experience the difference of customized treatments that cater to
-              your individual needs, and let your beauty shine like never
-              before.
-            </p>
-          </div>
+    <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)" }}>
+      {/* ------------------------------------------------ booking field */}
+      <div className="relative bleed overflow-hidden">
+        {/* neon fragment, partially cut by the right edge */}
+        <div
+          className="pointer-events-none absolute right-0 bottom-0 hidden md:block"
+          style={{ width: "min(38vw, 520px)", height: "min(58vh, 520px)" }}
+          aria-hidden
+        >
+          <Image
+            src="/img/neon-fragment.webp"
+            alt=""
+            fill
+            sizes="38vw"
+            className="object-cover"
+            style={{ objectPosition: "40% 50%" }}
+          />
+        </div>
+
+        <div
+          className="shell relative z-[2] flex flex-col justify-end"
+          style={{
+            minHeight: "clamp(420px, 70vh, 720px)",
+            paddingTop: "clamp(72px, 9vw, 120px)",
+            paddingBottom: "clamp(40px, 4vw, 56px)",
+          }}
+        >
+          <p className="eyebrow" style={{ color: "var(--color-mocha-soft)" }}>
+            Begin
+          </p>
+
           <a
             href={site.booking}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-invert shrink-0"
+            className="display mt-6 w-fit"
+            style={{
+              fontSize: "clamp(46px, 8vw, 112px)",
+              lineHeight: 0.9,
+              letterSpacing: "-0.035em",
+              borderBottom: "1px solid var(--color-mocha-soft)",
+              paddingBottom: "0.08em",
+            }}
           >
-            Book a visit
-            <span aria-hidden>&#8599;</span>
+            Book a visit <span aria-hidden>&#8599;</span>
           </a>
+
+          <p
+            className="mt-8 max-w-[44ch]"
+            style={{ color: dim, fontSize: 18, lineHeight: 1.5 }}
+          >
+            Experience the difference of customized treatments that cater to
+            your individual needs, and let your beauty shine like never before.
+          </p>
+
+          <div className="mt-9 flex flex-wrap gap-x-10 gap-y-3">
+            <a href={site.phoneHref} className="link-rule py-2" style={{ fontSize: 21 }}>
+              {site.phone}
+            </a>
+            <a
+              href={site.maps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-rule py-2"
+              style={{ fontSize: 21 }}
+            >
+              {site.address.street}, {site.address.city} {site.address.state}{" "}
+              {site.address.zip}
+            </a>
+          </div>
         </div>
+      </div>
 
-        <hr style={{ border: 0, borderTop: "1px solid rgba(247,243,240,0.24)" }} />
-
-        {/* directory */}
-        <div className="py-14 md:py-16 grid gap-12 md:grid-cols-12">
+      {/* ------------------------------------------------------- utility */}
+      <div className="shell" style={{ borderTop: `1px solid var(--color-mocha)` }}>
+        <div className="py-10 grid gap-8 md:grid-cols-12">
           <div className="md:col-span-4">
             <Image
               src="/img/logo-mocha.png"
@@ -49,45 +96,22 @@ export default function Footer() {
               width={440}
               height={162}
               unoptimized
-              className="h-[54px] w-auto"
+              className="h-[46px] w-auto"
             />
-            <p
-              className="meta mt-6 max-w-[30ch]"
-              style={{ color: "rgba(247,243,240,0.88)" }}
-            >
+            <p className="meta mt-5" style={{ color: dim }}>
               {site.positioning}
             </p>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
-              Visit
-            </p>
-            <a
-              href={site.maps}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 block link-rule py-2.5"
-              style={{ fontSize: 19, lineHeight: 1.45 }}
-            >
-              {site.address.street}
-              <br />
-              {site.address.city}, {site.address.state} {site.address.zip}
-            </a>
-          </div>
-
-          <div className="md:col-span-2">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
+          <div className="md:col-span-4">
+            <p className="eyebrow" style={{ color: "var(--color-mocha-soft)" }}>
               Reach us
             </p>
-            <div className="mt-5 flex flex-col gap-2">
-              <a href={site.phoneHref} className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
-                {site.phone}
-              </a>
+            <div className="mt-4 flex flex-col">
               <a
                 href={`mailto:${site.email}`}
-                className="link-rule w-fit break-all py-2.5"
-                style={{ fontSize: 15 }}
+                className="link-rule w-fit break-all py-2"
+                style={{ fontSize: 17 }}
               >
                 {site.email}
               </a>
@@ -95,44 +119,42 @@ export default function Footer() {
                 href={site.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-rule w-fit py-2.5"
-                style={{ fontSize: 19 }}
+                className="link-rule w-fit py-2"
+                style={{ fontSize: 17 }}
               >
                 @bocaskincompany
               </a>
             </div>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
+          <div className="md:col-span-4">
+            <p className="eyebrow" style={{ color: "var(--color-mocha-soft)" }}>
               Navigate
             </p>
-            <div className="mt-5 flex flex-col gap-2">
-              <Link href="/" className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
+            <div className="mt-4 flex flex-col">
+              <Link href="/" className="link-rule w-fit py-2" style={{ fontSize: 17 }}>
                 Home
               </Link>
               {nav.map((n) => (
                 <Link
                   key={n.href}
                   href={n.href}
-                  className="link-rule w-fit py-2.5"
-                  style={{ fontSize: 19 }}
+                  className="link-rule w-fit py-2"
+                  style={{ fontSize: 17 }}
                 >
                   {n.label}
                 </Link>
               ))}
-              <Link href="/links" className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
+              <Link href="/links" className="link-rule w-fit py-2" style={{ fontSize: 17 }}>
                 Shop &amp; links
               </Link>
             </div>
           </div>
         </div>
 
-        <hr style={{ border: 0, borderTop: "1px solid rgba(247,243,240,0.24)" }} />
-
         <div
-          className="py-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between meta"
-          style={{ color: "rgba(247,243,240,0.88)" }}
+          className="py-7 flex flex-col gap-3 md:flex-row md:items-center md:justify-between meta"
+          style={{ color: dim, borderTop: `1px solid ${hair}` }}
         >
           <p>
             &copy; {year} {site.name}. All rights reserved.
