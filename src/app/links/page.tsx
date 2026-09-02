@@ -16,8 +16,8 @@ export default function LinksPage() {
         eyebrow="Links"
         title="Everything in one place"
         deck="Book, shop the lines we carry, buy a gift card or leave a review."
-        image="/img/room-retail.webp"
-        alt="The retail shelves at Boca Skin Company"
+        image="/img/hero-shelf.webp"
+        alt="Skincare shelving at Boca Skin Company"
         objectPosition="42% 50%"
       />
 

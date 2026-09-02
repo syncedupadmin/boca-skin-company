@@ -23,8 +23,8 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Say hello"
         deck="Any questions? We&rsquo;d love to help."
-        image="/img/room-candles.webp"
-        alt="A treatment room at Boca Skin Company"
+        image="/img/hero-reception.webp"
+        alt="A candle-lit treatment room at Boca Skin Company"
         objectPosition="50% 42%"
         action={
           <a

@@ -319,7 +319,7 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "wellness",
     title: "Wellness",
     blurb: "IV therapy and vitamin injections. Kept separate from skin services on purpose.",
-    image: "/img/room-niche.webp",
+    image: "/img/room-detail.webp",
     treatments: [
       { name: "IV Bags", items: ["All in One IV", "Hangover Recovery IV", "Myers Cocktail IV", "Skinny Confidential IV", "Get Well Soon IV", "The Jet Setter IV", "Beauty Elixer IV", "NAD+ Injection"] },
       { name: "Vitamin Injections", items: ["Glutathione", "Vitamin D", "B12"] },
