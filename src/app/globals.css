@@ -3,7 +3,7 @@
 /* ==========================================================================
    BOCA SKIN COMPANY — design system
    Palette and type pairing are sampled from the existing brand, not invented:
-   #000000 / #775D4D / #FFFFFF / #F7F3F0, high-contrast old-style serif for
+   #000000 / #775D4D / warm paper, high-contrast old-style serif for
    display, letterspaced mono for every functional label.
    Hard rules, enforced everywhere: 0px radius, no shadows, no gradients.
    Depth comes only from 1px rules.
@@ -11,14 +11,25 @@
 
 @theme {
   --color-ink: #000000;
-  --color-ink-80: #33302e;
-  --color-ink-55: #6f6a66;
+  /* Supporting inks are warmed AND darkened together with the ground. On a
+     tan paper the old cool greys both clashed and fell under AA: #6f6a66
+     measured 4.10:1 on the new ground. */
+  --color-ink-80: #34302a;
+  --color-ink-55: #5e574d;
+
   --color-mocha: #775d4d;
+  /* The brand mocha is 4.19:1 on the deeper ground, which is fine for a field
+     or a rule but not for 11px labels. Small mocha text uses this instead. */
+  --color-mocha-ink: #6b5344;
   --color-mocha-deep: #5b463a;
   --color-mocha-soft: #a3897a;
-  --color-paper: #f7f3f0;
-  --color-paper-deep: #ece5e0;
-  --color-rule: #d9d0c9;
+
+  /* The tint. Warm sand rather than near-white, so the grounds sit with the
+     studio's own dim, candle-lit photography instead of fighting it.
+     Red-minus-blue moves from 7 to 24. */
+  --color-paper: #eae0d2;
+  --color-paper-deep: #e0d5c4;
+  --color-rule: #cdbfa9;
   --color-rule-dark: #3a2f28;
 
   --font-display: var(--font-eb-garamond), "EB Garamond", Garamond,
@@ -131,7 +142,7 @@ video {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.2;
-  color: var(--color-mocha);
+  color: var(--color-mocha-ink);
 }
 
 .meta {

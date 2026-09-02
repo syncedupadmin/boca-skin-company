@@ -24,8 +24,8 @@ export default function ServicesPage() {
         eyebrow="Explore our services"
         title="Services"
         deck="We'll help you achieve your unique beauty goals, one personalized treatment at a time."
-        image="/img/hero-bath.webp"
-        alt="A treatment suite at Boca Skin Company"
+        image="/img/hero-nook.webp"
+        alt="A candle-lit corner at Boca Skin Company"
         objectPosition="55% 40%"
         action={
           <a

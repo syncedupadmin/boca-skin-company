@@ -73,7 +73,7 @@ export default function ContactPage() {
         <div className="shell chapter-tight">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div>
-              <p className="label" style={{ color: "rgba(247,243,240,0.88)" }}>
+              <p className="label" style={{ color: "rgba(255,255,255,0.88)" }}>
                 Finding us
               </p>
               <p className="display d-lg mt-6 max-w-[18ch]">

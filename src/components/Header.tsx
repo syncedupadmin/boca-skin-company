@@ -130,7 +130,7 @@ export default function Header() {
                 onClick={() => setOpen(false)}
                 className="display d-lg text-[color:var(--color-paper)] py-2.5 border-b"
                 style={{
-                  borderColor: "rgba(247,243,240,0.22)",
+                  borderColor: "rgba(234,224,210,0.24)",
                   opacity: open ? 1 : 0,
                   transform: open ? "none" : "translateY(14px)",
                   transition: `opacity 520ms var(--ease-bsc) ${180 + i * 60}ms, transform 520ms var(--ease-bsc) ${180 + i * 60}ms`,
@@ -157,7 +157,7 @@ export default function Header() {
             <div
               className="mt-8 flex flex-col gap-1.5"
               style={{
-                color: "rgba(247,243,240,0.88)",
+                color: "rgba(255,255,255,0.88)",
                 opacity: open ? 1 : 0,
                 transition: "opacity 520ms var(--ease-bsc) 520ms",
               }}
@@ -187,7 +187,7 @@ export default function Header() {
           }}
         >
           <Image
-            src="/img/room-lounge.webp"
+            src="/img/room-detail.webp"
             alt=""
             fill
             sizes="100vw"

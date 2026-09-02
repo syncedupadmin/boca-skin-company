@@ -208,7 +208,7 @@ export default function AboutPage() {
             <h2 className="display d-xl rise">{teamWork.title}</h2>
             <div
               className="mt-7 max-w-[46ch] rise"
-              style={{ color: "rgba(247,243,240,0.88)", fontSize: 18, lineHeight: 1.55 }}
+              style={{ color: "rgba(255,255,255,0.88)", fontSize: 18, lineHeight: 1.55 }}
             >
               {teamWork.body.map((p) => (
                 <p key={p.slice(0, 20)} className="mt-4 first:mt-0">

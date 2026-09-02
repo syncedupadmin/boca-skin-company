@@ -9,8 +9,8 @@ import { site, nav } from "@/lib/content";
  */
 export default function Footer() {
   const year = new Date().getFullYear();
-  const dim = "rgba(247,243,240,0.88)";
-  const hair = "rgba(247,243,240,0.22)";
+  const dim = "rgba(255,255,255,0.88)";
+  const hair = "rgba(234,224,210,0.24)";
 
   return (
     <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)" }}>
@@ -18,8 +18,12 @@ export default function Footer() {
       <div className="relative bleed overflow-hidden">
         {/* neon fragment, partially cut by the right edge */}
         <div
-          className="pointer-events-none absolute right-0 bottom-0 hidden md:block"
-          style={{ width: "min(38vw, 520px)", height: "min(58vh, 520px)" }}
+          className="pointer-events-none absolute right-0 bottom-0"
+          style={{
+            width: "min(62vw, 520px)",
+            height: "min(46vh, 520px)",
+            opacity: 0.9,
+          }}
           aria-hidden
         >
           <Image

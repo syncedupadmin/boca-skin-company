@@ -15,11 +15,11 @@ import { hero, site } from "@/lib/content";
  * column carries two anchors — display type at the top, a compact conversion
  * cluster at the bottom — so the space between them is tension, not vacancy.
  *
- * The headline is a single continuous line of type that crosses the image
- * boundary. An earlier version drew a second paper-colored copy clipped to
- * the image, but the room is bright beige, so the light copy had almost no
- * contrast against it. Black reads cleanly over this crop, and one unbroken
- * headline cutting the room is the stronger composition anyway.
+ * The headline crosses the image boundary and changes colour where it does.
+ * It renders twice: black over the paper, and a paper-coloured copy clipped
+ * to the image region. The room is a dim, candle-lit interior, so a single
+ * black headline would disappear the moment it crossed. mix-blend-mode is
+ * avoided deliberately; it is unpredictable over an arbitrary crop.
  */
 function Headline() {
   return (
@@ -46,7 +46,7 @@ export default function Hero() {
         <div className="absolute inset-y-0 right-0" style={{ width: "61vw" }}>
           <Image
             src="/img/hero-room.webp"
-            alt="The arched lounge at Boca Skin Company in Boca Raton"
+            alt="A candle-lit treatment room at Boca Skin Company"
             fill
             priority
             sizes="61vw"
@@ -55,10 +55,26 @@ export default function Hero() {
           />
         </div>
 
-        {/* one continuous headline cutting across the image boundary */}
+        {/* black over paper */}
         <div
-          className="absolute z-[3] rise"
+          className="absolute z-[2] rise"
           style={{ left: "var(--gutter)", top: 128 }}
+        >
+          <Headline />
+        </div>
+
+        {/* the same headline in paper, clipped to the dark image region */}
+        <div
+          className="absolute z-[3] pointer-events-none rise"
+          style={{
+            left: "var(--gutter)",
+            top: 128,
+            color: "var(--color-paper)",
+            clipPath:
+              "polygon(calc(39vw - var(--gutter)) 0, 200% 0, 200% 100%, calc(39vw - var(--gutter)) 100%)",
+            width: "calc(100vw - var(--gutter))",
+          }}
+          aria-hidden
         >
           <Headline />
         </div>
@@ -105,7 +121,7 @@ export default function Hero() {
         >
           <Image
             src="/img/hero-room.webp"
-            alt="The arched lounge at Boca Skin Company in Boca Raton"
+            alt="A candle-lit treatment room at Boca Skin Company"
             fill
             priority
             sizes="100vw"
@@ -114,8 +130,9 @@ export default function Hero() {
           />
         </div>
 
-        {/* the headline crosses the bottom edge of the photograph */}
-        <div className="relative z-[2] shell" style={{ marginTop: -50 }}>
+        {/* No overlap on mobile: the room is a dark, candle-lit interior and
+            black display type laid over it would be unreadable. */}
+        <div className="relative z-[2] shell pt-8">
           <div className="rise">
             <Headline />
           </div>
