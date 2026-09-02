@@ -1,26 +1,390 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   BOCA SKIN COMPANY — design system
+   Palette and type pairing are sampled from the existing brand, not invented:
+   #000000 / #775D4D / #FFFFFF / #F7F3F0, high-contrast old-style serif for
+   display, letterspaced mono for every functional label.
+   Hard rules, enforced everywhere: 0px radius, no shadows, no gradients.
+   Depth comes only from 1px rules.
+   ========================================================================== */
+
+@theme {
+  --color-ink: #000000;
+  --color-ink-80: #33302e;
+  --color-ink-55: #6f6a66;
+  --color-mocha: #775d4d;
+  --color-mocha-deep: #5b463a;
+  --color-mocha-soft: #a3897a;
+  --color-paper: #f7f3f0;
+  --color-paper-deep: #ece5e0;
+  --color-rule: #d9d0c9;
+  --color-rule-dark: #3a2f28;
+
+  --font-display: var(--font-eb-garamond), "EB Garamond", Garamond,
+    "Times New Roman", serif;
+  --font-ui: var(--font-dm-mono), "DM Mono", ui-monospace, "SF Mono", monospace;
+
+  --ease-bsc: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------------------------------------- base --- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gutter: 20px;
+  --shell: 1560px;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@media (min-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --gutter: 40px;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 64px;
+  }
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  overflow-x: clip;
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+::selection {
+  background: var(--color-mocha);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-mocha);
+  outline-offset: 3px;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------ layout ---- */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Section rhythm — deliberately slow. Refero's editorial references all sit
+   near 160px; we scale it down gracefully rather than collapsing it. */
+.chapter {
+  padding-block: clamp(88px, 11vw, 172px);
+}
+.chapter-tight {
+  padding-block: clamp(64px, 7vw, 108px);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+}
+.rule-dark {
+  border: 0;
+  border-top: 1px solid var(--color-rule-dark);
+}
+
+/* ------------------------------------------------------- typography ----- */
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--color-mocha);
+}
+
+.meta {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* Functional prose — mono is a label face, so it is capped at short runs. */
+.mono-body {
+  font-family: var(--font-ui);
+  font-size: 13.5px;
+  letter-spacing: 0.015em;
+  line-height: 1.72;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+}
+
+/* Italic is a semantic hinge, never decoration. One phrase per headline. */
+.hinge {
+  font-style: italic;
+  letter-spacing: -0.005em;
+}
+
+.d-hero {
+  font-size: clamp(46px, 8.6vw, 92px);
+  line-height: 0.94;
+}
+@media (min-width: 1024px) {
+  .d-hero {
+    line-height: 0.9;
+  }
+}
+.d-xl {
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 0.98;
+}
+.d-lg {
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1;
+}
+.d-md {
+  font-size: clamp(28px, 3vw, 36px);
+  line-height: 1.06;
+}
+.d-sm {
+  font-size: clamp(24px, 2.2vw, 29px);
+  line-height: 1.12;
+}
+.deck {
+  font-size: clamp(20px, 1.8vw, 23px);
+  line-height: 1.36;
+}
+
+.prose-bsc {
+  max-width: 62ch;
+}
+.prose-bsc p + p {
+  margin-top: 1.15em;
+}
+.measure-narrow {
+  max-width: 44ch;
+}
+
+/* ---------------------------------------------------------- controls ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 17px 30px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: var(--color-ink);
+  transition: background-color 200ms var(--ease-bsc),
+    color 200ms var(--ease-bsc), border-color 200ms var(--ease-bsc);
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-mocha {
+  color: var(--color-mocha);
+  border-color: var(--color-mocha);
+}
+.btn-mocha:hover {
+  background: var(--color-mocha);
+  color: var(--color-paper);
+}
+.btn-invert {
+  color: var(--color-paper);
+  border-color: var(--color-paper);
+}
+.btn-invert:hover {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Link mechanic: the underline IS the consultation line at small scale. */
+.link-rule {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+.link-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 320ms var(--ease-bsc);
+}
+.link-rule:hover::after,
+.link-rule:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.link-rule-on::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.link-rule-on:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* ------------------------------------------------------------ motion ---- */
+/* Doctrine: one dominant motion per viewport. Transform + opacity + clip
+   only. Max 24px travel. No blur, no rotation, no spring, no parallax.
+   Everything below resolves to a still state and stays still.            */
+
+/* Fails OPEN. The hidden start state only exists once a blocking inline
+   script has confirmed JS is running (html.reveal-ready). With JS disabled,
+   broken, or slow, every element renders in its final visible state and the
+   page is simply static. Content must never depend on an observer firing. */
+
+html.reveal-ready .rise {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 700ms var(--ease-bsc), transform 700ms var(--ease-bsc);
+  transition-delay: var(--d, 0ms);
+}
+html.reveal-ready .rise.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Image reveal is a curtain, not a clip on the element itself.
+   Clipping the observed element to zero width hides it from
+   IntersectionObserver — both ours and next/image's lazy loader — so the
+   image never loads and the reveal never fires. The curtain is a pseudo
+   element, so the target stays fully measurable and the photo loads
+   normally. Set --curtain to the section's own background. */
+.wipe {
+  position: relative;
+  overflow: hidden;
+}
+html.reveal-ready .wipe::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--curtain, var(--color-paper));
+  transform: translate3d(0, 0, 0);
+  transition: transform 860ms var(--ease-bsc);
+  transition-delay: var(--d, 0ms);
+}
+html.reveal-ready .wipe.is-in::after {
+  transform: translate3d(101%, 0, 0);
+}
+
+html.reveal-ready .drawline {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 620ms var(--ease-bsc);
+  transition-delay: var(--d, 0ms);
+}
+html.reveal-ready .drawline.is-in {
+  transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-ready .rise,
+  html.reveal-ready .drawline {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  html.reveal-ready .wipe::after {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------- marquee -------- */
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 46s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------- utilities ----- */
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 10px 16px;
 }

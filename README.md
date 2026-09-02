@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Boca Skin Company
 
-## Getting Started
+Marketing site for [Boca Skin Company](https://www.bocaskincompany.com), an advanced
+aesthetics studio in Boca Raton, Florida.
 
-First, run the development server:
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · deployed on Vercel.
+
+## Design system
+
+Palette and type pairing are the studio's existing brand, sampled from the live site's
+computed styles rather than approximated:
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-ink` | `#000000` | Text, the results stage |
+| `--color-mocha` | `#775D4D` | The Consultation Line, accents, the footer |
+| `--color-paper` | `#F7F3F0` | Primary canvas |
+| `--color-paper-deep` | `#ECE5E0` | Secondary canvas |
+
+Display type is **EB Garamond**, standing in for the brand's Garamond Premier Pro.
+Functional type is **DM Mono**, standing in for Antarctican Mono. Both originals are
+Adobe Fonts and cannot be self-hosted here.
+
+Three rules are enforced globally: **0px radius, no shadows, no gradients.** Depth comes
+only from 1px rules.
+
+### The Consultation Line
+
+One vertical mocha rule that changes function per section: the hero image's left
+boundary, the chapter spine in "Does this sound like you" and Chloe's story, the
+before/after reveal handle, the seam in the mobile nav overlay, and the underline
+mechanic on every link. The grid is deliberately asymmetric and never defaults to 50/50,
+because the studio's whole proposition is that there is no one-size-fits-all.
+
+## Content integrity
+
+Every string in `src/lib/content.ts` was extracted from the live site. Nothing is
+invented. In particular:
+
+- **No prices.** They live in the Boulevard booking system and are not published on the
+  source site.
+- **No business hours.** The source site publishes none.
+- **No downtime or intensity ratings.** Assigning those would be making a medical claim.
+- **No treatment names on the before/after cases.** The source material carries none.
+
+### Before/after handling
+
+The eight source composites were split into sixteen frames. Orientation and direction
+were verified case by case: before is the left half (side-by-side) or the top half
+(stacked) in all eight. Two cases whose frames are not registered to each other render
+as a static matched pair rather than a wipe, because wiping between two different camera
+angles would imply a transformation that is not in the photographs. Neither side is
+graded, smoothed or retouched.
+
+## Motion
+
+One dominant motion per viewport. Transform, opacity and a curtain reveal only. Max 24px
+travel, no blur, no rotation, no parallax, no scroll hijacking. Everything resolves to a
+still state and stays still. `prefers-reduced-motion` is honored.
+
+The reveal system **fails open**: the hidden start state only applies once a blocking
+inline script confirms JS is running, and a watchdog removes it if hydration never
+arrives. With JS off or broken the page renders complete and static.
+
+> Note: reveals must never clip the observed element. Clipping it to zero width hides it
+> from IntersectionObserver — both ours and `next/image`'s lazy loader — so the image
+> never loads and the reveal never fires. The curtain is a pseudo element for that reason.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Push to `main` on GitHub; Vercel auto-deploys production.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [SyncedUp Solutions](https://websites.syncedupsolutions.com).
