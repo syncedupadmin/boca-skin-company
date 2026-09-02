@@ -16,9 +16,9 @@ export default function LinksPage() {
         eyebrow="Links"
         title="Everything in one place"
         deck="Book, shop the lines we carry, buy a gift card or leave a review."
-        image="/img/room-busts.webp"
-        alt="Inside Boca Skin Company"
-        objectPosition="58% 45%"
+        image="/img/room-retail.webp"
+        alt="The retail shelves at Boca Skin Company"
+        objectPosition="42% 50%"
       />
 
       <section className="pad-lg" style={{ background: "var(--color-paper)" }}>

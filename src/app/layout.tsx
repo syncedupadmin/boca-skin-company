@@ -49,11 +49,20 @@ export const metadata: Metadata = {
     description: DESC,
     url: site.url,
     locale: "en_US",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Boca Skin Company — Medical Meets Luxury, Boca Raton, Florida",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Boca Skin Company | Medical Meets Luxury",
     description: DESC,
+    images: ["/og.jpg"],
   },
   robots: isLiveDomain
     ? { index: true, follow: true }
@@ -75,7 +84,7 @@ const jsonLd = {
   url: site.url,
   telephone: `+1-${site.phone}`,
   email: site.email,
-  image: `${site.url}/img/room-lounge.webp`,
+  image: `${site.url}/og.jpg`,
   address: {
     "@type": "PostalAddress",
     streetAddress: site.address.street,

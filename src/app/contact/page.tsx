@@ -23,9 +23,9 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Say hello"
         deck="Any questions? We&rsquo;d love to help."
-        image="/img/hero-bath.webp"
-        alt="Inside Boca Skin Company"
-        objectPosition="52% 44%"
+        image="/img/room-candles.webp"
+        alt="A treatment room at Boca Skin Company"
+        objectPosition="50% 42%"
         action={
           <a
             href={site.booking}

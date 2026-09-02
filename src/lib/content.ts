@@ -100,7 +100,7 @@ export const ourWork = {
     },
     {
       title: "Custom Facials",
-      image: "/img/spec-facial.webp",
+      image: "/img/skin-glow.webp",
       lead: "Our custom facials are another testament to our commitment to personalized beauty.",
       body: "Our custom facials are another testament to our commitment to personalized beauty. By blending carefully chosen facial treatments with the appropriate peels, we address your unique concerns, whether it's combating acne, reducing pigmentation, or simply achieving a radiant glow. These facials are meticulously tailored to your skin type and condition, ensuring you experience the most effective and enjoyable skincare journey.",
     },
@@ -319,7 +319,7 @@ export const serviceCategories: ServiceCategory[] = [
     slug: "wellness",
     title: "Wellness",
     blurb: "IV therapy and vitamin injections. Kept separate from skin services on purpose.",
-    image: "/img/bsc-neon.webp",
+    image: "/img/room-niche.webp",
     treatments: [
       { name: "IV Bags", items: ["All in One IV", "Hangover Recovery IV", "Myers Cocktail IV", "Skinny Confidential IV", "Get Well Soon IV", "The Jet Setter IV", "Beauty Elixer IV", "NAD+ Injection"] },
       { name: "Vitamin Injections", items: ["Glutathione", "Vitamin D", "B12"] },
