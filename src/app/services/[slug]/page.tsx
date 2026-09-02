@@ -157,6 +157,56 @@ export default async function CategoryPage({ params }: Params) {
             ))}
           </div>
 
+          {/* A colour field, not another photograph: the treatment lists are
+              long and text-only, so this breaks the run and puts the booking
+              action where the reading actually ends. */}
+        </div>
+      </section>
+
+      <section
+        className="bleed"
+        style={{ background: "var(--color-mocha)", color: "#ffffff" }}
+      >
+        <div
+          className="shell flex flex-col justify-center pad-md"
+          style={{ minHeight: "clamp(280px, 32vw, 420px)" }}
+        >
+          <h2
+            className="display"
+            style={{
+              fontSize: "clamp(30px, 3.6vw, 54px)",
+              lineHeight: 0.98,
+              letterSpacing: "-0.028em",
+              maxWidth: "16ch",
+            }}
+          >
+            Not sure which is right for you?
+          </h2>
+          <p
+            className="mt-5 max-w-[46ch]"
+            style={{ fontSize: 18, lineHeight: 1.5, color: "rgba(255,255,255,0.88)" }}
+          >
+            We will look at your skin in person and build the plan from there.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={site.booking}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-invert"
+            >
+              Book a visit
+              <span aria-hidden>&#8599;</span>
+            </a>
+            <a href={site.phoneHref} className="btn btn-invert">
+              {site.phone}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="pad-md" style={{ background: "var(--color-paper)" }}>
+        <div className="shell">
           {/* next category */}
           <Link
             href={`/services/${next.slug}`}

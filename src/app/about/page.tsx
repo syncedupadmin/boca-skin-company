@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
+/**
+ * The founder story is the longest body copy on the site. Left as four
+ * consecutive paragraphs it became four full phone screens of unbroken text,
+ * which is the same "text document" failure the homepage had.
+ *
+ * So the page alternates material the whole way down: portrait field, mocha
+ * statement, dense chapter cluster, second portrait field, black team field.
+ * No run of prose is allowed to fill a viewport on its own.
+ */
 export default function AboutPage() {
   const { chloe, jordan, teamWork } = about;
 
@@ -26,191 +35,200 @@ export default function AboutPage() {
         objectPosition="55% 45%"
       />
 
-      {/* --------------------------------------------------------- chloe */}
-      <section
-        className="chapter"
-        style={{ background: "var(--color-paper-deep)" }}
-      >
-        <div className="shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-20">
-            <div className="lg:sticky lg:top-[120px] lg:self-start">
-              <div
-                className="relative wipe"
+      {/* ------------------------------------------- chloe, portrait field */}
+      <section className="bleed" style={{ background: "var(--color-paper-deep)" }}>
+        <div className="flex flex-col lg:flex-row lg:items-stretch">
+          <div
+            className="relative lg:w-[46vw] shrink-0"
+            style={{ minHeight: "clamp(400px, 62svh, 720px)" }}
+          >
+            <Image
+              src={chloe.image}
+              alt={`${chloe.name}, ${chloe.role}`}
+              fill
+              sizes="(max-width: 1023px) 100vw, 46vw"
+              className="object-cover"
+              style={{ objectPosition: "49% 20%" }}
+            />
+            <p
+              className="absolute bottom-0 left-0 label slab"
+              style={{ color: "var(--color-mocha)", padding: "16px 20px" }}
+            >
+              {chloe.name}, {chloe.role}
+            </p>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center px-[var(--gutter)] py-[clamp(48px,6vw,88px)]">
+            <h2 className="display d-lg max-w-[20ch] rise">{chloe.lead}</h2>
+            <div
+              className="mt-7 max-w-[52ch] rise"
+              style={{ color: "var(--color-ink-80)", fontSize: 18, lineHeight: 1.55 }}
+            >
+              {chloe.body.map((p) => (
+                <p key={p.slice(0, 20)} className="mt-4 first:mt-0">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------ chapter cluster */}
+      <section className="pad-lg" style={{ background: "var(--color-paper)" }}>
+        <div className="shell lg:grid lg:grid-cols-[minmax(0,3fr)_minmax(0,8fr)] lg:gap-16">
+          <p className="eyebrow lg:sticky lg:top-[120px] lg:self-start">
+            Her story
+          </p>
+
+          <ol className="mt-8 lg:mt-0" style={{ borderTop: "1px solid var(--color-mocha)" }}>
+            {chloe.chapters.map((ch, i) => (
+              <li
+                key={ch.k}
+                className="grid gap-2 md:grid-cols-[130px_minmax(0,1fr)] md:gap-8 py-8 rise"
                 style={{
-                  aspectRatio: "4 / 5",
-                  ["--curtain" as string]: "var(--color-paper-deep)",
+                  borderBottom: "1px solid var(--color-mocha)",
+                  ["--d" as string]: `${i * 60}ms`,
                 }}
               >
-                <Image
-                  src={chloe.image}
-                  alt={`${chloe.name}, ${chloe.role}`}
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 32vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="label mt-4" style={{ color: "var(--color-mocha)" }}>
-                {chloe.name}, {chloe.role}
-              </p>
-            </div>
-
-            <div>
-              <h2 className="display d-lg max-w-[24ch] rise">{chloe.lead}</h2>
-              <div
-                className="prose-bsc mt-7 rise"
-                style={{ color: "var(--color-ink-80)" }}
-              >
-                {chloe.body.map((p) => (
-                  <p key={p.slice(0, 20)}>{p}</p>
-                ))}
-              </div>
-
-              {/* the line becomes a chapter spine */}
-              <ol className="mt-12">
-                {chloe.chapters.map((ch, i) => (
-                  <li
-                    key={ch.k}
-                    className="rise py-7"
-                    style={{
-                      borderTop: "1px solid var(--color-rule)",
-                      ["--d" as string]: `${i * 70}ms`,
-                    }}
-                  >
-                    <h3 className="display d-sm">
-                      <span style={{ color: "var(--color-mocha)" }}>{ch.k}</span>
-                    </h3>
-                    <p
-                      className="prose-bsc mt-2"
-                      style={{ color: "var(--color-ink-80)" }}
-                    >
-                      {ch.body}
-                    </p>
-                  </li>
-                ))}
-              </ol>
-
-              <div
-                className="mt-12 pt-9"
-                style={{ borderTop: "1px solid var(--color-rule)" }}
-              >
-                <p className="eyebrow rise">{chloe.solidified.title}</p>
-                <ul className="mt-5 flex flex-col sm:flex-row sm:gap-10">
-                  {chloe.solidified.points.map((p) => (
-                    <li key={p} className="display d-sm py-2 rise">
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <p
-                  className="prose-bsc mt-7 rise"
-                  style={{ color: "var(--color-ink-80)" }}
+                <h3
+                  className="display"
+                  style={{ fontSize: "clamp(26px, 2.2vw, 32px)", color: "var(--color-mocha)" }}
                 >
-                  {chloe.solidified.close}
+                  {ch.k}
+                </h3>
+                <p
+                  className="max-w-[58ch]"
+                  style={{ fontSize: 18, lineHeight: 1.55, color: "var(--color-ink-80)" }}
+                >
+                  {ch.body}
                 </p>
-                <p className="display d-md mt-7 max-w-[36ch] rise">
-                  {chloe.solidified.legacy}
-                </p>
-              </div>
-            </div>
-          </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      {/* -------------------------------------------------------- jordan */}
-      <section className="chapter" style={{ background: "var(--color-paper)" }}>
-        <div className="shell">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.28fr)_minmax(0,0.72fr)] lg:gap-20">
-            <div className="lg:order-2 lg:sticky lg:top-[120px] lg:self-start">
-              <div
-                className="relative wipe"
-                style={{
-                  aspectRatio: "4 / 5",
-                  ["--curtain" as string]: "var(--color-paper)",
-                }}
-              >
-                <Image
-                  src={jordan.image}
-                  alt={`${jordan.name}, ${jordan.role}`}
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 32vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="label mt-4" style={{ color: "var(--color-mocha)" }}>
-                {jordan.name}, {jordan.role}
-              </p>
-            </div>
-
-            <div className="lg:order-1">
-              <h2 className="display d-xl rise">{jordan.name}</h2>
-              <div
-                className="prose-bsc mt-7 rise"
-                style={{ color: "var(--color-ink-80)" }}
-              >
-                {jordan.body.map((p) => (
-                  <p key={p.slice(0, 20)}>{p}</p>
-                ))}
-              </div>
-              <p className="display d-md mt-9 max-w-[34ch] rise">
-                {jordan.close}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------ team work */}
+      {/* ------------------------------------------------- mocha statement */}
       <section
-        className="chapter"
+        className="bleed"
+        style={{ background: "var(--color-mocha)", color: "#ffffff" }}
+      >
+        <div
+          className="shell pad-lg flex flex-col justify-center"
+          style={{ minHeight: "clamp(340px, 42vw, 520px)" }}
+        >
+          <h2
+            className="display rise"
+            style={{
+              fontSize: "clamp(30px, 4.2vw, 62px)",
+              lineHeight: 0.98,
+              letterSpacing: "-0.028em",
+              maxWidth: "20ch",
+            }}
+          >
+            {chloe.solidified.legacy}
+          </h2>
+
+          <div className="mt-10 flex flex-col sm:flex-row sm:gap-14 gap-4 rise">
+            {chloe.solidified.points.map((pt) => (
+              <p
+                key={pt}
+                className="display"
+                style={{ fontSize: "clamp(20px, 1.8vw, 26px)", color: "rgba(255,255,255,0.88)" }}
+              >
+                {pt}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------ jordan, portrait field */}
+      <section className="bleed" style={{ background: "var(--color-paper)" }}>
+        <div className="flex flex-col lg:flex-row-reverse lg:items-stretch">
+          <div
+            className="relative lg:w-[46vw] shrink-0"
+            style={{ minHeight: "clamp(400px, 62svh, 720px)" }}
+          >
+            <Image
+              src={jordan.image}
+              alt={`${jordan.name}, ${jordan.role}`}
+              fill
+              sizes="(max-width: 1023px) 100vw, 46vw"
+              className="object-cover"
+              style={{ objectPosition: "52% 16%" }}
+            />
+            <p
+              className="absolute bottom-0 right-0 label slab"
+              style={{ color: "var(--color-mocha)", padding: "16px 20px" }}
+            >
+              {jordan.name}, {jordan.role}
+            </p>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center px-[var(--gutter)] py-[clamp(48px,6vw,88px)]">
+            <h2 className="display d-xl rise">{jordan.name}</h2>
+            <div
+              className="mt-7 max-w-[52ch] rise"
+              style={{ color: "var(--color-ink-80)", fontSize: 18, lineHeight: 1.55 }}
+            >
+              {jordan.body.map((p) => (
+                <p key={p.slice(0, 20)} className="mt-4 first:mt-0">
+                  {p}
+                </p>
+              ))}
+            </div>
+            <p className="display d-md mt-8 max-w-[28ch] rise">{jordan.close}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------ team field */}
+      <section
+        className="bleed"
         style={{ background: "var(--color-ink)", color: "var(--color-paper)" }}
       >
-        <div className="shell">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20 items-center">
-            <div
-              className="relative wipe"
-              style={{
-                aspectRatio: "4 / 5",
-                ["--curtain" as string]: "var(--color-ink)",
-              }}
-            >
-              <Image
-                src="/img/team-duo.webp"
-                alt="Chloe and Jordan of Boca Skin Company"
-                fill
-                sizes="(max-width: 1023px) 100vw, 45vw"
-                className="object-cover"
-              />
-            </div>
+        <div className="flex flex-col lg:flex-row lg:items-stretch">
+          <div
+            className="relative lg:w-[50vw] shrink-0"
+            style={{ minHeight: "clamp(400px, 66svh, 760px)" }}
+          >
+            <Image
+              src="/img/team-duo.webp"
+              alt="Chloe and Jordan of Boca Skin Company"
+              fill
+              sizes="(max-width: 1023px) 100vw, 50vw"
+              className="object-cover"
+              style={{ objectPosition: "50% 26%" }}
+            />
+          </div>
 
-            <div>
-              <p className="eyebrow rise" style={{ color: "var(--color-mocha-soft)" }}>
-                Together
-              </p>
-              <h2 className="display d-xl mt-5 rise">
-                Our team, at work.
-              </h2>
-              <div
-                className="prose-bsc mt-7 rise"
-                style={{ color: "rgba(247,243,240,0.88)" }}
+          <div className="flex-1 flex flex-col justify-center px-[var(--gutter)] py-[clamp(56px,6vw,96px)]">
+            <h2 className="display d-xl rise">{teamWork.title}</h2>
+            <div
+              className="mt-7 max-w-[46ch] rise"
+              style={{ color: "rgba(247,243,240,0.88)", fontSize: 18, lineHeight: 1.55 }}
+            >
+              {teamWork.body.map((p) => (
+                <p key={p.slice(0, 20)} className="mt-4 first:mt-0">
+                  {p}
+                </p>
+              ))}
+            </div>
+            <div className="mt-9 flex flex-wrap gap-3 rise">
+              <Link href="/services" className="btn btn-invert">
+                Explore our services
+              </Link>
+              <a
+                href={site.booking}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-invert"
               >
-                {teamWork.body.map((p) => (
-                  <p key={p.slice(0, 20)}>{p}</p>
-                ))}
-              </div>
-              <div className="mt-9 flex flex-wrap gap-4 rise">
-                <Link href="/services" className="btn btn-invert">
-                  Explore our services
-                </Link>
-                <a
-                  href={site.booking}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-invert"
-                >
-                  Book a visit
-                  <span aria-hidden>&#8599;</span>
-                </a>
-              </div>
+                Book a visit
+                <span aria-hidden>&#8599;</span>
+              </a>
             </div>
           </div>
         </div>

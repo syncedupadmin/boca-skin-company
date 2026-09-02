@@ -96,8 +96,8 @@ export default function ServicesPage() {
                     className="meta mt-4"
                     style={{
                       color: "var(--color-ink-55)",
-                      fontSize: 13,
-                      lineHeight: 1.8,
+                      fontSize: 14,
+                      lineHeight: 1.85,
                     }}
                   >
                     {cat.treatments
