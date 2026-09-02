@@ -198,8 +198,10 @@ video {
   line-height: 1.36;
 }
 
+/* ch is the width of "0", which is wider than average lowercase in this
+   face, so 62ch rendered ~75 characters. 54ch lands near the 65 target. */
 .prose-bsc {
-  max-width: 62ch;
+  max-width: 54ch;
 }
 .prose-bsc p + p {
   margin-top: 1.15em;

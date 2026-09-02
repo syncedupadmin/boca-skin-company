@@ -42,7 +42,13 @@ export default async function CategoryPage({ params }: Params) {
             &#8592; All services
           </Link>
 
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-20 mt-10 md:mt-14 items-end">
+          <div
+            className={`grid gap-10 lg:gap-20 mt-10 md:mt-14 items-end ${
+              cat.image
+                ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]"
+                : "lg:grid-cols-1"
+            }`}
+          >
             <div>
               <p className="eyebrow rise">Services</p>
               <h1 className="display d-hero mt-5 max-w-[14ch] text-balance rise">

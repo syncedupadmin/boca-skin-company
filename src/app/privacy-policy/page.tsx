@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <section style={{ background: "var(--color-paper)" }}>
-      <div className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-20 md:pb-28">
+      <div
+        className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-20 md:pb-28"
+        style={{ maxWidth: 900 }}
+      >
         <p className="eyebrow">Legal</p>
         <h1 className="display d-xl mt-5">Privacy Policy</h1>
 

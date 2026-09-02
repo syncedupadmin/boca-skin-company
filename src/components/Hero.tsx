@@ -24,13 +24,13 @@ export default function Hero() {
             grid
             pt-[100px] pb-14
             md:pt-[140px] md:pb-20
-            lg:grid-cols-[minmax(0,1fr)_38vw]
+            lg:grid-cols-[minmax(0,1fr)_clamp(300px,34vw,540px)]
             lg:grid-rows-[auto_auto] lg:items-end
             lg:min-h-[100svh] lg:pt-[140px] lg:pb-[76px]
           "
         >
           {/* 1 — the proposition */}
-          <div className="lg:col-start-1 lg:row-start-1 lg:pr-[6vw] lg:self-end">
+          <div className="lg:col-start-1 lg:row-start-1 lg:pr-[clamp(24px,4vw,88px)] lg:self-end">
             <p className="eyebrow rise" style={{ ["--d" as string]: "300ms" }}>
               {hero.eyebrow}
             </p>
@@ -64,7 +64,7 @@ export default function Hero() {
             />
 
             <div
-              className="relative lg:ml-[max(28px,3vw)] wipe"
+              className="relative lg:ml-[clamp(28px,3vw,56px)] wipe"
               style={{
                 aspectRatio: "4 / 5",
                 ["--d" as string]: "140ms",
@@ -82,7 +82,7 @@ export default function Hero() {
             </div>
 
             <p
-              className="meta mt-3 lg:ml-[max(28px,3vw)] rise"
+              className="meta mt-3 lg:ml-[clamp(28px,3vw,56px)] rise"
               style={{ color: "var(--color-ink-55)", ["--d" as string]: "900ms" }}
             >
               Boca Raton, Florida
@@ -91,7 +91,7 @@ export default function Hero() {
 
           {/* 3 — the detail */}
           <div
-            className="flex flex-col gap-7 rise lg:col-start-1 lg:row-start-2 lg:pr-[6vw] lg:pt-10"
+            className="flex flex-col gap-7 rise lg:col-start-1 lg:row-start-2 lg:pr-[clamp(24px,4vw,88px)] lg:pt-10"
             style={{ ["--d" as string]: "700ms" }}
           >
             <p className="deck max-w-[40ch]" style={{ color: "var(--color-ink-80)" }}>

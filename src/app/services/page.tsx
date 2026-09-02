@@ -23,8 +23,8 @@ export default function ServicesPage() {
       {/* ---------------------------------------------------------- hero */}
       <section style={{ background: "var(--color-paper)" }}>
         <div className="shell">
-          <div className="grid items-end pt-[104px] pb-10 md:pt-[150px] md:pb-14 lg:grid-cols-[minmax(0,1fr)_30vw] lg:pt-[160px] lg:pb-16">
-            <div className="lg:pr-[6vw] order-2 lg:order-1">
+          <div className="grid items-end pt-[104px] pb-10 md:pt-[150px] md:pb-14 lg:grid-cols-[minmax(0,1fr)_clamp(260px,26vw,430px)] lg:pt-[160px] lg:pb-16">
+            <div className="lg:pr-[clamp(24px,4vw,88px)] order-2 lg:order-1">
               <h1 className="display d-hero mt-6 max-w-[17ch] text-balance rise">
                 We&rsquo;ll help you achieve your unique beauty goals, one
                 personalized treatment at a time.
@@ -44,7 +44,7 @@ export default function ServicesPage() {
 
             <div className="relative order-1 lg:order-2 mb-10 lg:mb-0">
               <div
-                className="relative lg:ml-[max(24px,2.5vw)] wipe"
+                className="relative lg:ml-[clamp(24px,2.5vw,48px)] wipe"
                 style={{
                   aspectRatio: "3 / 4",
                   ["--curtain" as string]: "var(--color-paper)",

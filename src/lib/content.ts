@@ -263,7 +263,10 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Energy-Based Treatments",
     blurb:
       "Device-led resurfacing and remodeling. These carry a different commitment profile than a facial.",
-    image: "/img/room-led.webp",
+    // The LED-room shot is lit in saturated blue and fights the warm palette.
+    // This is the actual RF console and handpieces, which is both on-category
+    // and on-brand.
+    image: "/img/treat-advanced.webp",
     treatments: [
       {
         name: "Morpheus8",
