@@ -3,7 +3,7 @@ import { EB_Garamond, DM_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RevealRoot from "@/components/RevealRoot";
-import { site } from "@/lib/content";
+import { site, isLiveDomain } from "@/lib/content";
 import "./globals.css";
 
 const garamond = EB_Garamond({
@@ -55,7 +55,9 @@ export const metadata: Metadata = {
     title: "Boca Skin Company — Medical Meets Luxury",
     description: DESC,
   },
-  robots: { index: true, follow: true },
+  robots: isLiveDomain
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

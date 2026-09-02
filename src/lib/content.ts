@@ -26,8 +26,18 @@ export const site = {
   giftCards: "https://www.vagaro.com/bocaskincompany/gift-certificates",
   financing:
     "https://salesloft.withcherry.com/t/105319/c/468c1ec8-484a-4300-94f6-fa447b1b952b/NB2HI4DTHIXS64DBPEXHO2LUNBRWQZLSOJ4S4Y3PNUXXG23JNZRHSY3INRXWK4TPONST65LUNVPXG33VOJRWKPLNMVZGG2DBNZ2CM5LUNVPW2ZLENF2W2PLTN5RWSYLML5WWKZDJME======/pay-withcherry-com-skinbychlo",
-  url: "https://www.bocaskincompany.com",
+  /**
+   * Canonical origin. Defaults to the Vercel URL so a preview deployment never
+   * claims the client's live domain. Set NEXT_PUBLIC_SITE_URL to
+   * https://www.bocaskincompany.com when the domain is pointed here; that also
+   * flips the site from noindex to indexable (see app/robots.ts).
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://boca-skin-company.vercel.app",
+  liveDomain: "https://www.bocaskincompany.com",
 } as const;
+
+/** True only once the real domain is attached. Gates indexing. */
+export const isLiveDomain = site.url === site.liveDomain;
 
 export const nav = [
   { label: "About", href: "/about" },
