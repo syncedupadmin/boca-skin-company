@@ -46,7 +46,7 @@ export default function ContactPage() {
             {rows.map((r) => (
               <div
                 key={r.k}
-                className="drow grid grid-cols-[110px_minmax(0,1fr)] gap-6 md:gap-12 items-center px-0 lg:px-5 rise"
+                className="drow grid grid-cols-1 gap-1.5 py-7 items-start sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-6 sm:py-0 sm:items-center md:gap-12 px-0 lg:px-5 rise"
                 style={{ borderBottom: "1px solid var(--color-rule)", minHeight: 104 }}
               >
                 <dt className="label" style={{ color: "var(--color-mocha)" }}>
