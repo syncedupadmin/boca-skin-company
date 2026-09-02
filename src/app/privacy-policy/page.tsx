@@ -56,20 +56,26 @@ export default function PrivacyPage() {
           </p>
         </div>
 
-        <p
-          className="mono-body mt-10 max-w-[62ch]"
-          style={{ color: "var(--color-ink-55)" }}
+        {/* Verbatim from the source policy. Do not paraphrase or trim: the
+            controller-responsibility and disagreement clauses are load-bearing
+            legal language, not marketing copy. */}
+        <div
+          className="prose-bsc mt-10"
+          style={{ color: "var(--color-ink-80)" }}
         >
-          Questions about this notice? Email{" "}
-          <a href={`mailto:${site.email}`} className="link-rule link-rule-on">
-            {site.email}
-          </a>{" "}
-          or call{" "}
-          <a href={site.phoneHref} className="link-rule link-rule-on">
-            {site.phone}
-          </a>
-          .
-        </p>
+          <p>
+            Questions or concerns? Reading this Privacy Notice will help you
+            understand your privacy rights and choices. We are responsible for
+            making decisions about how your personal information is processed.
+            If you do not agree with our policies and practices, please do not
+            use our Services. If you still have any questions or concerns,
+            please contact us at{" "}
+            <a href={`mailto:${site.email}`} className="link-rule link-rule-on">
+              {site.email}
+            </a>
+            .
+          </p>
+        </div>
       </div>
     </section>
   );

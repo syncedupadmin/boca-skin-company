@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
-import ResultsInstrument from "@/components/ResultsInstrument";
 import Testimonials from "@/components/Testimonials";
 import {
   philosophy,
@@ -17,26 +16,25 @@ export default function Home() {
       <Hero />
 
       {/* =============================================== the premise ===== */}
-      <section className="chapter" style={{ background: "var(--color-paper)" }}>
+      <section
+        style={{ background: "var(--color-paper)" }}
+        className="pb-[clamp(72px,9vw,132px)] pt-[clamp(48px,5vw,80px)]"
+      >
         <div className="shell">
-          <hr className="rule" />
-          <div className="grid gap-10 pt-12 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-20">
-            <p className="eyebrow rise lg:pt-3">{philosophy.eyebrow}</p>
+          <div className="lg:grid lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:gap-20 lg:items-end">
             <div>
-              <h2 className="display d-lg rise max-w-[24ch]">
+              <h2 className="display d-lg rise max-w-[22ch]">
                 At Boca Skin Company, we&rsquo;re firm believers that when it
-                comes to skincare and beauty treatments,{" "}
-                <span className="hinge" style={{ color: "var(--color-mocha)" }}>
-                  there is no one-size-fits-all approach.
-                </span>
+                comes to skincare and beauty treatments, there is no
+                one-size-fits-all approach.
               </h2>
-              <p
-                className="prose-bsc mt-8 rise"
-                style={{ ["--d" as string]: "90ms", color: "var(--color-ink-80)" }}
-              >
-                {philosophy.body}
-              </p>
             </div>
+            <p
+              className="mt-8 lg:mt-0 rise max-w-[46ch]"
+              style={{ ["--d" as string]: "90ms", color: "var(--color-ink-80)" }}
+            >
+              {philosophy.body}
+            </p>
           </div>
         </div>
       </section>
@@ -47,52 +45,33 @@ export default function Home() {
         style={{ background: "var(--color-paper)" }}
       >
         <div className="shell">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,1fr)] lg:gap-20">
-            <div className="rise lg:pt-2">
-              <h2 className="display d-md max-w-[14ch]">
-                {soundsLikeYou.eyebrow}
-              </h2>
-            </div>
+          <h2 className="display d-lg max-w-[18ch] rise">
+            {soundsLikeYou.eyebrow}
+          </h2>
 
-            {/* the line becomes a chapter spine */}
-            <ol
-              className="relative pl-7 md:pl-12"
-              style={{ borderLeft: "1px solid var(--color-rule)" }}
-            >
-              <span
-                className="absolute left-[-1px] top-0 bottom-0 drawline"
-                style={{ width: 1, background: "var(--color-mocha)" }}
-                aria-hidden
-              />
-              {soundsLikeYou.items.map((it, i) => (
-                <li
-                  key={it.n}
-                  className="rise pb-10 last:pb-0"
-                  style={{ ["--d" as string]: `${i * 90}ms` }}
-                >
-                  <div className="flex items-baseline gap-4">
-                    <span className="meta" style={{ color: "var(--color-mocha)" }}>
-                      {it.n}
-                    </span>
-                    <h3 className="display d-sm">{it.claim}</h3>
-                  </div>
-                  <p
-                    className="prose-bsc mt-3"
-                    style={{ color: "var(--color-ink-80)" }}
-                  >
-                    {it.body}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <ol className="mt-12 md:mt-16 grid gap-x-10 gap-y-9 md:grid-cols-3">
+            {soundsLikeYou.items.map((it, i) => (
+              <li
+                key={it.claim}
+                className="rise pt-6"
+                style={{
+                  borderTop: "1px solid var(--color-rule)",
+                  ["--d" as string]: `${i * 90}ms`,
+                }}
+              >
+                <h3 className="display d-sm">{it.claim}</h3>
+                <p className="mt-3" style={{ color: "var(--color-ink-80)" }}>
+                  {it.body}
+                </p>
+              </li>
+            ))}
+          </ol>
 
           <p
-            className="display d-lg mt-16 md:mt-24 max-w-[20ch] rise"
-            style={{ marginInlineStart: "auto" }}
+            className="display d-lg mt-16 md:mt-24 max-w-[26ch] rise pt-9"
+            style={{ borderTop: "1px solid var(--color-rule)" }}
           >
-            You are <span className="hinge">ready</span> to take your skin health
-            to the next level.
+            You are ready to take your skin health to the next level.
           </p>
         </div>
       </section>
@@ -104,9 +83,8 @@ export default function Home() {
       >
         <div className="shell">
           <div className="max-w-[70ch]">
-            <p className="eyebrow rise">{ourWork.eyebrow}</p>
             <p
-              className="deck mt-6 rise"
+              className="deck rise"
               style={{ ["--d" as string]: "80ms", color: "var(--color-ink-80)" }}
             >
               {ourWork.body}
@@ -118,7 +96,7 @@ export default function Home() {
               const flip = i % 2 === 1;
               return (
                 <article
-                  key={s.n}
+                  key={s.title}
                   className={`grid gap-8 md:gap-14 items-center lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] ${
                     flip ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]" : ""
                   }`}
@@ -141,12 +119,9 @@ export default function Home() {
 
                   <div className={flip ? "lg:order-1 lg:pr-10" : "lg:pl-6"}>
                     <div
-                      className="flex items-baseline gap-4 pb-4 rise"
+                      className="pb-4 rise"
                       style={{ borderBottom: "1px solid var(--color-rule)" }}
                     >
-                      <span className="meta" style={{ color: "var(--color-mocha)" }}>
-                        {s.n}
-                      </span>
                       <h3 className="display d-md">{s.title}</h3>
                     </div>
                     <p
@@ -173,9 +148,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* =================================================== results ===== */}
-      <ResultsInstrument />
-
       {/* ================================================== the room ===== */}
       <section className="chapter" style={{ background: "var(--color-paper)" }}>
         <div className="shell">
@@ -197,8 +169,7 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="eyebrow rise">{welcome.eyebrow}</p>
-              <h2 className="display d-lg mt-5 rise max-w-[20ch]">
+              <h2 className="display d-lg rise max-w-[20ch]">
                 {welcome.statement}
               </h2>
               <div

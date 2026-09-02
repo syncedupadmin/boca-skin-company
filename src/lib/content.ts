@@ -23,9 +23,14 @@ export const site = {
   instagram: "https://www.instagram.com/bocaskincompany",
   reviews:
     "https://www.google.com/search?q=boca+skin+company+bsc&sca_esv=571066675",
-  giftCards: "https://www.vagaro.com/bocaskincompany/gift-certificates",
-  financing:
-    "https://salesloft.withcherry.com/t/105319/c/468c1ec8-484a-4300-94f6-fa447b1b952b/NB2HI4DTHIXS64DBPEXHO2LUNBRWQZLSOJ4S4Y3PNUXXG23JNZRHSY3INRXWK4TPONST65LUNVPXG33VOJRWKPLNMVZGG2DBNZ2CM5LUNVPW2ZLENF2W2PLTN5RWSYLML5WWKZDJME======/pay-withcherry-com-skinbychlo",
+  // The original site's Vagaro gift-certificate URL returns 404. Gift cards
+  // are sold through the Boulevard widget ("Gift Card - Purchase a gift card
+  // for future visits"), so this points there until Vagaro is confirmed.
+  giftCards: "https://www.joinblvd.com/b/bocaskincompany/widget#/visit-type",
+  // The original site's Cherry tracked link returns 403 ("This URL could not
+  // be verified"). This is Cherry's direct practice URL, which resolves 200.
+  // Ask Cherry for a fresh tracked link if attribution matters.
+  financing: "https://pay.withcherry.com/skinbychloerose",
   /**
    * Canonical origin. Defaults to the Vercel URL so a preview deployment never
    * claims the client's live domain. Set NEXT_PUBLIC_SITE_URL to
@@ -42,14 +47,13 @@ export const isLiveDomain = site.url === site.liveDomain;
 export const nav = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Results", href: "/#results" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 /* ---------------------------------------------------------------- HOME --- */
 
 export const hero = {
-  eyebrow: "Boca Raton, FL — Advanced Aesthetics",
+  eyebrow: "Boca Raton, FL / Advanced Aesthetics",
   headlineLead: "There is no",
   headlineItalic: "one-size-fits-all",
   headlineTail: "approach to your skin.",
@@ -70,17 +74,14 @@ export const soundsLikeYou = {
   close: "You are ready to take your skin health to the next level.",
   items: [
     {
-      n: "01",
       claim: "Tried every product",
       body: "Just like everyone else, you see a product on Instagram or TikTok because an influencer is using it. Skincare isn't a one-size-fits-all. We are here to help guide you and create a customized regimen specifically for your skin.",
     },
     {
-      n: "02",
       claim: "Nothing is clearing my acne",
       body: "Your provider plays a key role in clearing your skin. If nothing has worked, they could not be applying or treating the skin properly. We will dive deeper to figure out what is happening and come up with a game plan.",
     },
     {
-      n: "03",
       claim: "Why can't I have clear skin",
       body: "Consistency is key. Clear skin doesn't happen overnight, you need a trusted professional to help you down the right path.",
     },
@@ -92,13 +93,11 @@ export const ourWork = {
   body: "Every person's skin is a canvas with its own story, challenges, and aspirations. We recognize the importance of personalization in achieving the best results, which is why we've made it our specialty to craft treatments that are as unique as you are.",
   specialties: [
     {
-      n: "01",
       title: "Core Specialties",
       image: "/img/treat-device.webp",
       body: "One of our core specialties lies in the art of combining treatments to create a synergistic effect. Take, for instance, our Hydrafacial x Microneedling fusion. This innovative pairing harnesses the deep exfoliation and rejuvenation of a Hydrafacial with the collagen-boosting power of Microneedling, resulting in a treatment that not only refreshes your skin but also enhances its youthful radiance.",
     },
     {
-      n: "02",
       title: "Custom Facials",
       image: "/img/treat-mask.webp",
       body: "Our custom facials are another testament to our commitment to personalized beauty. By blending carefully chosen facial treatments with the appropriate peels, we address your unique concerns, whether it's combating acne, reducing pigmentation, or simply achieving a radiant glow. These facials are meticulously tailored to your skin type and condition, ensuring you experience the most effective and enjoyable skincare journey.",
@@ -115,35 +114,6 @@ export const welcome = {
     "Our dedication to customization has resulted in countless success stories, where our clients have seen remarkable transformations in their skin and overall confidence. We take immense pride in helping you achieve your unique beauty goals, one personalized treatment at a time.",
   ],
 };
-
-/* ------------------------------------------------------------- RESULTS --- */
-/**
- * Orientation and direction were visually verified case by case against the
- * source composites: before is the left half (side-by-side) or the top half
- * (stacked) in all eight. Cases presented as "pair" are not framed
- * consistently between halves, so a wipe would misrepresent them.
- * No treatment name, session count or timeframe is attached to any case
- * because the source publishes none.
- */
-export type ResultCase = {
-  id: string;
-  n: string;
-  mode: "wipe" | "pair";
-  ratio: number;
-  before: string;
-  after: string;
-};
-
-export const results: ResultCase[] = [
-  { id: "c05", n: "01", mode: "wipe", ratio: 0.5, before: "/results/case-05-before.webp", after: "/results/case-05-after.webp" },
-  { id: "c07", n: "02", mode: "wipe", ratio: 0.5, before: "/results/case-07-before.webp", after: "/results/case-07-after.webp" },
-  { id: "c08", n: "03", mode: "wipe", ratio: 0.5, before: "/results/case-08-before.webp", after: "/results/case-08-after.webp" },
-  { id: "c04", n: "04", mode: "wipe", ratio: 0.5, before: "/results/case-04-before.webp", after: "/results/case-04-after.webp" },
-  { id: "c02", n: "05", mode: "wipe", ratio: 0.5, before: "/results/case-02-before.webp", after: "/results/case-02-after.webp" },
-  { id: "c06", n: "06", mode: "wipe", ratio: 0.5, before: "/results/case-06-before.webp", after: "/results/case-06-after.webp" },
-  { id: "c03", n: "07", mode: "pair", ratio: 1, before: "/results/case-03-before.webp", after: "/results/case-03-after.webp" },
-  { id: "c01", n: "08", mode: "pair", ratio: 1, before: "/results/case-01-before.webp", after: "/results/case-01-after.webp" },
-];
 
 /* ---------------------------------------------------------- TESTIMONIALS - */
 
@@ -167,7 +137,7 @@ export const about = {
   sub: "We believe that this personal connection is the foundation of a successful beauty journey.",
   chloe: {
     name: "Chloe Elliott",
-    role: "Founder — Aesthetician",
+    role: "Founder, Aesthetician",
     image: "/img/chloe.webp",
     lead: "Chloe Elliott, a passionate and skilled aesthetician, stands as the driving force behind the transformative journey of Boca Skin Company.",
     body: [
@@ -230,7 +200,6 @@ export type Treatment = {
 };
 
 export type ServiceCategory = {
-  n: string;
   slug: string;
   title: string;
   blurb: string;
@@ -246,7 +215,6 @@ export const servicesIntro = {
 
 export const serviceCategories: ServiceCategory[] = [
   {
-    n: "01",
     slug: "facial-systems",
     title: "Facial Systems",
     blurb:
@@ -274,7 +242,6 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "02",
     slug: "collagen-induction",
     title: "Infusion & Collagen Induction",
     blurb:
@@ -292,7 +259,6 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "03",
     slug: "energy-based",
     title: "Energy-Based Treatments",
     blurb:
@@ -310,7 +276,6 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "04",
     slug: "chemical-resurfacing",
     title: "Chemical Resurfacing",
     blurb:
@@ -327,7 +292,6 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "05",
     slug: "combination-treatments",
     title: "Combination Treatments",
     blurb:
@@ -339,7 +303,6 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "06",
     slug: "enhancements",
     title: "Enhancements",
     blurb: "Add-ons. These attach to a treatment above rather than standing alone.",
@@ -348,11 +311,9 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
   {
-    n: "07",
     slug: "wellness",
     title: "Wellness",
     blurb: "IV therapy and vitamin injections. Kept separate from skin services on purpose.",
-    image: "/img/treat-advanced.webp",
     treatments: [
       { name: "IV Bags", items: ["All in One IV", "Hangover Recovery IV", "Myers Cocktail IV", "Skinny Confidential IV", "Get Well Soon IV", "The Jet Setter IV", "Beauty Elixer IV", "NAD+ Injection"] },
       { name: "Vitamin Injections", items: ["Glutathione", "Vitamin D", "B12"] },
@@ -366,7 +327,7 @@ export const shopLinks = [
   { label: "Book an appointment", href: site.booking, note: "Boulevard" },
   { label: "View or leave a review", href: site.reviews, note: "Google" },
   { label: "Morpheus8 payment plans with Cherry", href: site.financing, note: "Financing" },
-  { label: "Gift cards", href: site.giftCards, note: "Vagaro" },
+  { label: "Gift cards", href: site.giftCards, note: "Boulevard" },
   { label: "Shop Skin Better Science", href: "https://skinbetter.pro/skinbychloerose", note: "Shop" },
   { label: "Shop Colorescience", href: "https://colorescience.com/Skin-by-Chloe-Rose", note: "Shop" },
   { label: "Shop Jan Marini Skin Research", href: "https://marini.life/208574", note: "Shop" },

@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="shell pt-[160px] pb-28 min-h-[70svh] flex flex-col justify-center">
         <p className="eyebrow">Error 404</p>
         <h1 className="display d-xl mt-5 max-w-[16ch]">
-          This page has <span className="hinge">moved on.</span>
+          This page has moved on.
         </h1>
         <p
           className="deck mt-6 max-w-[42ch]"

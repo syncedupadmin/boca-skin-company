@@ -15,13 +15,13 @@ export default function Footer() {
         {/* booking */}
         <div className="chapter-tight grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.7)" }}>
+            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
               Begin
             </p>
             <h2 className="display d-xl mt-5 max-w-[15ch]">
-              Your skin, <span className="hinge">read closely.</span>
+              Your skin, read closely.
             </h2>
-            <p className="mt-6 max-w-[54ch] deck" style={{ color: "rgba(247,243,240,0.82)" }}>
+            <p className="mt-6 max-w-[54ch] deck" style={{ color: "rgba(247,243,240,0.88)" }}>
               Experience the difference of customized treatments that cater to
               your individual needs, and let your beauty shine like never
               before.
@@ -53,21 +53,21 @@ export default function Footer() {
             />
             <p
               className="meta mt-6 max-w-[30ch]"
-              style={{ color: "rgba(247,243,240,0.72)" }}
+              style={{ color: "rgba(247,243,240,0.88)" }}
             >
               {site.positioning}
             </p>
           </div>
 
           <div className="md:col-span-3">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.6)" }}>
+            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
               Visit
             </p>
             <a
               href={site.maps}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block link-rule"
+              className="mt-5 block link-rule py-2.5"
               style={{ fontSize: 19, lineHeight: 1.45 }}
             >
               {site.address.street}
@@ -77,16 +77,16 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.6)" }}>
+            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
               Reach us
             </p>
             <div className="mt-5 flex flex-col gap-2">
-              <a href={site.phoneHref} className="link-rule w-fit" style={{ fontSize: 19 }}>
+              <a href={site.phoneHref} className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
                 {site.phone}
               </a>
               <a
                 href={`mailto:${site.email}`}
-                className="link-rule w-fit break-all"
+                className="link-rule w-fit break-all py-2.5"
                 style={{ fontSize: 15 }}
               >
                 {site.email}
@@ -95,7 +95,7 @@ export default function Footer() {
                 href={site.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-rule w-fit"
+                className="link-rule w-fit py-2.5"
                 style={{ fontSize: 19 }}
               >
                 @bocaskincompany
@@ -104,24 +104,24 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.6)" }}>
+            <p className="eyebrow" style={{ color: "rgba(247,243,240,0.88)" }}>
               Navigate
             </p>
             <div className="mt-5 flex flex-col gap-2">
-              <Link href="/" className="link-rule w-fit" style={{ fontSize: 19 }}>
+              <Link href="/" className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
                 Home
               </Link>
               {nav.map((n) => (
                 <Link
                   key={n.href}
                   href={n.href}
-                  className="link-rule w-fit"
+                  className="link-rule w-fit py-2.5"
                   style={{ fontSize: 19 }}
                 >
                   {n.label}
                 </Link>
               ))}
-              <Link href="/links" className="link-rule w-fit" style={{ fontSize: 19 }}>
+              <Link href="/links" className="link-rule w-fit py-2.5" style={{ fontSize: 19 }}>
                 Shop &amp; links
               </Link>
             </div>
@@ -132,7 +132,7 @@ export default function Footer() {
 
         <div
           className="py-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between meta"
-          style={{ color: "rgba(247,243,240,0.66)" }}
+          style={{ color: "rgba(247,243,240,0.88)" }}
         >
           <p>
             &copy; {year} {site.name}. All rights reserved.

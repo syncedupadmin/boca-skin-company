@@ -18,7 +18,6 @@ export default function AboutPage() {
       {/* ---------------------------------------------------------- hero */}
       <section style={{ background: "var(--color-paper)" }}>
         <div className="shell pt-[104px] md:pt-[150px] lg:pt-[164px] pb-14 md:pb-20">
-          <p className="eyebrow rise">{about.eyebrow}</p>
           <h1 className="display d-xl mt-6 max-w-[26ch] text-balance rise">
             {about.headline}
           </h1>
@@ -72,7 +71,7 @@ export default function AboutPage() {
                 />
               </div>
               <p className="label mt-4" style={{ color: "var(--color-mocha)" }}>
-                {chloe.name} &mdash; {chloe.role}
+                {chloe.name}, {chloe.role}
               </p>
             </div>
 
@@ -88,25 +87,18 @@ export default function AboutPage() {
               </div>
 
               {/* the line becomes a chapter spine */}
-              <ol
-                className="relative mt-12 pl-7 md:pl-12"
-                style={{ borderLeft: "1px solid var(--color-rule)" }}
-              >
-                <span
-                  className="absolute left-[-1px] top-0 bottom-0 drawline"
-                  style={{ width: 1, background: "var(--color-mocha)" }}
-                  aria-hidden
-                />
+              <ol className="mt-12">
                 {chloe.chapters.map((ch, i) => (
                   <li
                     key={ch.k}
-                    className="rise pb-9 last:pb-0"
-                    style={{ ["--d" as string]: `${i * 70}ms` }}
+                    className="rise py-7"
+                    style={{
+                      borderTop: "1px solid var(--color-rule)",
+                      ["--d" as string]: `${i * 70}ms`,
+                    }}
                   >
                     <h3 className="display d-sm">
-                      <span className="hinge" style={{ color: "var(--color-mocha)" }}>
-                        {ch.k}
-                      </span>
+                      <span style={{ color: "var(--color-mocha)" }}>{ch.k}</span>
                     </h3>
                     <p
                       className="prose-bsc mt-2"
@@ -166,7 +158,7 @@ export default function AboutPage() {
                 />
               </div>
               <p className="label mt-4" style={{ color: "var(--color-mocha)" }}>
-                {jordan.name} &mdash; {jordan.role}
+                {jordan.name}, {jordan.role}
               </p>
             </div>
 
@@ -216,11 +208,11 @@ export default function AboutPage() {
                 Together
               </p>
               <h2 className="display d-xl mt-5 rise">
-                Our <span className="hinge">(team)</span> work.
+                Our team, at work.
               </h2>
               <div
                 className="prose-bsc mt-7 rise"
-                style={{ color: "rgba(247,243,240,0.82)" }}
+                style={{ color: "rgba(247,243,240,0.88)" }}
               >
                 {teamWork.body.map((p) => (
                   <p key={p.slice(0, 20)}>{p}</p>

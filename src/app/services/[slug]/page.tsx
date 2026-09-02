@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: Params) {
 
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-20 mt-10 md:mt-14 items-end">
             <div>
-              <p className="eyebrow rise">Collection {cat.n}</p>
+              <p className="eyebrow rise">Services</p>
               <h1 className="display d-hero mt-5 max-w-[14ch] text-balance rise">
                 {cat.title}
               </h1>
@@ -96,16 +96,12 @@ export default async function CategoryPage({ params }: Params) {
             {cat.treatments.map((t, i) => (
               <article
                 key={t.name}
-                className="grid gap-5 md:gap-10 md:grid-cols-[auto_minmax(0,0.65fr)_minmax(0,1.2fr)] py-10 md:py-14 rise"
+                className="grid gap-5 md:gap-10 md:grid-cols-[minmax(0,0.65fr)_minmax(0,1.2fr)] py-10 md:py-14 rise"
                 style={{
                   borderTop: "1px solid var(--color-rule)",
                   ["--d" as string]: `${Math.min(i, 5) * 60}ms`,
                 }}
               >
-                <span className="meta" style={{ color: "var(--color-mocha)" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
                 <h2 className="display d-md md:sticky md:top-[110px] md:self-start">
                   {t.name}
                 </h2>
@@ -155,14 +151,14 @@ export default async function CategoryPage({ params }: Params) {
             ))}
           </div>
 
-          {/* next collection */}
+          {/* next category */}
           <Link
             href={`/services/${next.slug}`}
             className="group flex items-baseline justify-between gap-6 pt-10 mt-4"
             style={{ borderTop: "1px solid var(--color-rule)" }}
           >
             <span className="label" style={{ color: "var(--color-mocha)" }}>
-              Next collection
+              Next
             </span>
             <span className="display d-md transition-colors duration-300 group-hover:text-[color:var(--color-mocha)]">
               {next.title}{" "}

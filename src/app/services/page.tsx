@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { serviceCategories, servicesIntro, site } from "@/lib/content";
+import { serviceCategories, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -25,13 +25,9 @@ export default function ServicesPage() {
         <div className="shell">
           <div className="grid items-end pt-[104px] pb-10 md:pt-[150px] md:pb-14 lg:grid-cols-[minmax(0,1fr)_30vw] lg:pt-[160px] lg:pb-16">
             <div className="lg:pr-[6vw] order-2 lg:order-1">
-              <p className="eyebrow rise">{servicesIntro.eyebrow}</p>
               <h1 className="display d-hero mt-6 max-w-[17ch] text-balance rise">
-                We&rsquo;ll help you achieve your unique beauty goals,{" "}
-                <span className="hinge" style={{ color: "var(--color-mocha)" }}>
-                  one personalized treatment
-                </span>{" "}
-                at a time.
+                We&rsquo;ll help you achieve your unique beauty goals, one
+                personalized treatment at a time.
               </h1>
               <div className="mt-9 flex flex-wrap gap-4 rise">
                 <a
@@ -47,11 +43,6 @@ export default function ServicesPage() {
             </div>
 
             <div className="relative order-1 lg:order-2 mb-10 lg:mb-0">
-              <div
-                className="absolute left-0 top-0 bottom-0 hidden lg:block drawline"
-                style={{ width: 1, background: "var(--color-mocha)" }}
-                aria-hidden
-              />
               <div
                 className="relative lg:ml-[max(24px,2.5vw)] wipe"
                 style={{
@@ -83,9 +74,9 @@ export default function ServicesPage() {
             className="flex items-baseline justify-between pb-5"
             style={{ borderBottom: "1px solid var(--color-rule)" }}
           >
-            <p className="eyebrow">The index</p>
+            <p className="eyebrow">All treatments</p>
             <p className="meta" style={{ color: "var(--color-ink-55)" }}>
-              {serviceCategories.length} collections
+              {serviceCategories.length} categories
             </p>
           </div>
 
@@ -101,22 +92,15 @@ export default function ServicesPage() {
                   className="group block py-8 md:py-10"
                   style={{ borderBottom: "1px solid var(--color-rule)" }}
                 >
-                  <div className="grid gap-4 md:gap-8 md:grid-cols-[auto_minmax(0,1.05fr)_minmax(0,1fr)_auto] md:items-baseline">
-                    <span
-                      className="meta"
-                      style={{ color: "var(--color-mocha)" }}
-                    >
-                      {cat.n}
-                    </span>
-
+                  <div className="grid gap-4 md:gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)_auto] md:items-baseline">
                     {/* the category name is the navigation */}
                     <h2 className="display d-lg transition-colors duration-300 group-hover:text-[color:var(--color-mocha)]">
                       {cat.title}
                     </h2>
 
                     <p
-                      className="mono-body max-w-[46ch]"
-                      style={{ color: "var(--color-ink-55)" }}
+                      className="max-w-[46ch]"
+                      style={{ fontSize: 17, lineHeight: 1.5, color: "var(--color-ink-80)" }}
                     >
                       {cat.blurb}
                     </p>
@@ -125,7 +109,7 @@ export default function ServicesPage() {
                       className="label whitespace-nowrap"
                       style={{ color: "var(--color-mocha)" }}
                     >
-                      {String(countOptions(cat)).padStart(2, "0")} options{" "}
+                      {countOptions(cat)} treatments{" "}
                       <span
                         aria-hidden
                         className="inline-block transition-transform duration-300 group-hover:translate-x-1"
@@ -136,8 +120,12 @@ export default function ServicesPage() {
                   </div>
 
                   <p
-                    className="meta mt-4 md:ml-[calc(2ch+2rem)]"
-                    style={{ color: "var(--color-ink-55)" }}
+                    className="meta mt-4"
+                    style={{
+                      color: "var(--color-ink-55)",
+                      fontSize: 13,
+                      lineHeight: 1.8,
+                    }}
                   >
                     {cat.treatments
                       .flatMap((t) => t.items ?? t.tiers?.map((x) => x.name) ?? [t.name])
@@ -149,16 +137,14 @@ export default function ServicesPage() {
           </ul>
 
           <p
-            className="mono-body mt-10 max-w-[62ch]"
-            style={{ color: "var(--color-ink-55)" }}
+            className="mt-10 max-w-[62ch]"
+            style={{ fontSize: 17, color: "var(--color-ink-80)" }}
           >
-            Pricing and availability are held in our booking system so they are
-            never out of date here. Select a treatment to see live options, or
-            call us at{" "}
+            Not sure which is right for you? Call us at{" "}
             <a href={site.phoneHref} className="link-rule link-rule-on">
               {site.phone}
-            </a>{" "}
-            if you would rather talk it through first.
+            </a>
+            .
           </p>
         </div>
       </section>

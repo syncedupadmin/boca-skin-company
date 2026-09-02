@@ -17,7 +17,7 @@ export default function LinksPage() {
           <div className="lg:sticky lg:top-[120px] lg:self-start">
             <p className="eyebrow rise">Links</p>
             <h1 className="display d-xl mt-5 max-w-[12ch] rise">
-              Everything in <span className="hinge">one</span> place.
+              Everything in one place.
             </h1>
             <div
               className="relative mt-9 wipe"

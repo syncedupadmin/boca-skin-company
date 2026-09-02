@@ -27,8 +27,8 @@ const DESC =
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Boca Skin Company — Medical Meets Luxury, Boca Raton FL",
-    template: "%s — Boca Skin Company",
+    default: "Boca Skin Company | Medical Meets Luxury, Boca Raton FL",
+    template: "%s | Boca Skin Company",
   },
   description: DESC,
   applicationName: site.name,
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: "Boca Skin Company — Medical Meets Luxury",
+    title: "Boca Skin Company | Medical Meets Luxury",
     description: DESC,
     url: site.url,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Boca Skin Company — Medical Meets Luxury",
+    title: "Boca Skin Company | Medical Meets Luxury",
     description: DESC,
   },
   robots: isLiveDomain

@@ -37,8 +37,8 @@ export default function Header() {
         <div className="shell flex items-center justify-between h-[68px] md:h-[84px]">
           <Link
             href="/"
-            aria-label="Boca Skin Company — home"
-            className="relative block shrink-0"
+            aria-label="Boca Skin Company, home"
+            className="relative block shrink-0 py-2"
           >
             <Image
               src="/img/logo-paper.png"
@@ -56,7 +56,7 @@ export default function Header() {
               <Link
                 key={n.href}
                 href={n.href}
-                className="label link-rule text-[color:var(--color-ink)] hover:text-[color:var(--color-mocha)] transition-colors duration-200"
+                className="label link-rule py-3 text-[color:var(--color-ink)] hover:text-[color:var(--color-mocha)] transition-colors duration-200"
               >
                 {n.label}
               </Link>
@@ -76,7 +76,7 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="md:hidden label flex items-center gap-3 py-2 -mr-1"
+            className="md:hidden label flex items-center gap-3 py-3.5 pl-3 -mr-1"
           >
             <span className="relative block w-[26px] h-[9px]" aria-hidden>
               <span
@@ -157,19 +157,19 @@ export default function Header() {
             <div
               className="mt-8 flex flex-col gap-1.5"
               style={{
-                color: "rgba(247,243,240,0.72)",
+                color: "rgba(247,243,240,0.88)",
                 opacity: open ? 1 : 0,
                 transition: "opacity 520ms var(--ease-bsc) 520ms",
               }}
             >
-              <a href={site.phoneHref} className="meta link-rule">
+              <a href={site.phoneHref} className="meta link-rule py-2">
                 {site.phone}
               </a>
               <a
                 href={site.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="meta link-rule"
+                className="meta link-rule py-2"
               >
                 {site.address.street}, {site.address.city} {site.address.state}
               </a>

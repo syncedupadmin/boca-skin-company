@@ -7,9 +7,8 @@ export default function Testimonials() {
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:gap-20">
           <div className="rise lg:sticky lg:top-[120px] lg:self-start">
-            <p className="eyebrow">The BSC Experience</p>
-            <h2 className="display d-xl mt-5 max-w-[12ch]">
-              In their <span className="hinge">own</span> words.
+            <h2 className="display d-xl max-w-[12ch]">
+              In their own words.
             </h2>
             <a
               href={site.reviews}
